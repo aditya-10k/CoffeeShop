@@ -1,4 +1,7 @@
+import 'package:coffee/pages/homepage.dart';
 import 'package:coffee/pages/loginpage.dart';
+import 'package:coffee/pages/signup.dart';
+import 'package:coffee/pages/splashs.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -13,7 +16,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: LoginPage(),
+      //home: LoginPage(),
+initialRoute:'/login' ,
+      routes: {
+       '/login' : (context) => LoginPage(),
+       '/signup' : (context) => Signup(),
+       '/splash' : (context) => Splashs(),
+       '/homepage' : (context) => Homepage(),
+      },
     );
   }
 }

@@ -3,14 +3,15 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class Signup extends StatefulWidget {
+  const Signup({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<Signup> createState() => _SignupState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignupState extends State<Signup> {
+
 
   bool obscuretext = true;
 
@@ -32,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
                 child: Center(
                   child: Container(
                     padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                    height: 400+20,
+                    height: 350,
                     width: 340,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
@@ -45,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
                       children: [
                         SizedBox(height: 10,),
                         Text(
-                          'Login',
+                          'Signup',
                           style: GoogleFonts.robotoSlab(
                           fontWeight: FontWeight.bold,
                           color: Colors.white70,
@@ -53,39 +54,6 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                          SizedBox(height: 10+10,),
-
-                         TextFormField(
-                    //controller: name,
-                    style: TextStyle(
-                      color: Colors.white70,
-                      fontSize: 16
-                    ),
-                    decoration: InputDecoration(
-                      hintText: 'Name',
-                      hintStyle: TextStyle(color: Colors.white38),
-                      prefixIcon: Icon(
-                          Icons.person_2_outlined,
-                      color: Colors.white70,
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20),
-                        borderSide: BorderSide(
-                          color: const Color.fromARGB(255, 3, 77, 188),
-                          width: 2
-                        )
-                      ),
-                        enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          width: 2,
-                          color: Colors.white70,
-                        ),
-                        borderRadius:BorderRadius.circular(20),
-
-                      )
-                    ),
-                  ),
-                  SizedBox(height:20-10 ,),
-
                          TextFormField(
                   style: TextStyle(
                       color: Colors.white70,
@@ -169,7 +137,7 @@ class _LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Dont have an account?  ,',
+                      'Already have an account  ,',
                       style: TextStyle(
                               fontSize: 20-5,
                               color: Colors.white70,
@@ -177,9 +145,9 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                     ),
                     TextButton(
-                          onPressed: () { Navigator.pushNamed(context, '/signup' );  },
+                          onPressed: () { Navigator.pushNamed(context, '/login' );  },
                           child: Text(
-                              'signup',
+                              'login',
                             style: TextStyle(
                               fontSize: 20-5,
                              
@@ -201,7 +169,7 @@ class _LoginPageState extends State<LoginPage> {
                       },
                     
                       child: Text(
-                        'Log-in',
+                        'Sign-up',
                         style: TextStyle(
                         color: Colors.white70,
                           fontSize: 20,
