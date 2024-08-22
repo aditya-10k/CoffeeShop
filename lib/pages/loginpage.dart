@@ -1,0 +1,146 @@
+import 'dart:ui';
+
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+
+  bool obscuretext = true;
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+          child: Container(
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              image: DecorationImage(image: AssetImage("assets/Designer (2).jpeg"),
+              fit: BoxFit.fitHeight
+              ),   
+            ),
+
+            child: Scaffold(
+            body: ClipRRect(
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 3,sigmaY: 3),
+                child: Center(
+                  child: Container(
+                    padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                    height: 350,
+                    width: 340,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(width: 1,color: Colors.black38),
+                    color: Colors.black38.withOpacity(0.6),
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SizedBox(height: 10,),
+                        Text(
+                          'Login',
+                          style: GoogleFonts.robotoSlab(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white70,
+                          fontSize: 50
+                          ),
+                        ),
+                         SizedBox(height: 10+10,),
+                         TextFormField(
+                  style: TextStyle(
+                      color: Colors.white70,
+                    fontSize: 16
+                  ),
+                  //controller: mail,
+                  decoration: InputDecoration(
+                    prefixIcon: Icon(
+                        Icons.mail,
+                      color: Colors.white70,
+                    ),
+                      hintText:'Email' ,
+                      hintStyle: TextStyle(color: Colors.white38),
+                    //focusColor: Colors.cyan,
+                    focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      borderSide: BorderSide(
+                        width: 2,
+                        color: const Color.fromARGB(255, 3, 77, 188),
+                      )
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                      borderSide: BorderSide(
+                        width: 2,
+                        color: Colors.white70,
+                      )
+                    ),
+                  ),
+                  validator: (mail){
+                    if(mail!.isEmpty ||!RegExp(r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$').hasMatch(mail!)){
+                      return'Enter valid E-mail';}
+                      else
+                        return null;
+                    }
+                ),
+                SizedBox(height: 10,),
+                TextFormField(
+                  style: TextStyle(
+                    color: Colors.white38,
+                    fontSize: 16,
+                  ),
+                  //controller: psk,
+                  obscureText: obscuretext,
+                  decoration: InputDecoration(
+                    prefixIcon: Icon(
+                      Icons.lock_outline,
+                          color: Colors.white70,
+                    ),
+                   hintText:'Password' ,
+                   hintStyle: TextStyle(color: Colors.white38),
+                    suffixIcon: IconButton(
+                       onPressed: () { setState(() {
+                         obscuretext = !obscuretext;
+                       });
+                          },
+                     icon:  Icon(
+                    
+                         obscuretext ? Icons.remove_red_eye :Icons.visibility_off),
+                    ),
+                    //focusColor: Colors.cyan,
+                      focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                          borderSide: BorderSide(
+                            width: 2,
+                            color: const Color.fromARGB(255, 3, 77, 188),
+                          )
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                          borderSide: BorderSide(
+                            width: 2,
+                            color: Colors.white70,
+                          )
+                      )
+                  ),
+
+                ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+             backgroundColor: Colors.transparent,
+            ), 
+          
+           ),
+    );
+  }
+}
