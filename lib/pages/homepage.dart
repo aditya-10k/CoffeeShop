@@ -1,8 +1,17 @@
+import 'package:coffee/pages/auth.dart';
 import 'package:coffee/pages/loginpage.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import  'auth.dart';
 
 class Homepage extends StatefulWidget {
-  const Homepage({super.key});
+   Homepage({super.key});
+
+  final User? user = Auth().currentUser;
+
+  Future<void> signOut() async {
+    await Auth().signOut();
+  }
 
   @override
   State<Homepage> createState() => _HomepageState();
@@ -44,7 +53,8 @@ class _HomepageState extends State<Homepage> {
                 color: Colors.white70,
                 fontSize: 20
               ),),
-              onTap: () {
+              onTap: () async {
+                await widget.signOut();
                 Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoginPage()));
               },
             )
