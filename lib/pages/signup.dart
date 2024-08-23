@@ -33,7 +33,7 @@ class _SignupState extends State<Signup> {
                 child: Center(
                   child: Container(
                     padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                    height: 350,
+                    height: 420,
                     width: 340,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
@@ -54,6 +54,39 @@ class _SignupState extends State<Signup> {
                           ),
                         ),
                          SizedBox(height: 10+10,),
+
+                        TextFormField(
+                    //controller: name,
+                    style: TextStyle(
+                      color: Colors.white70,
+                      fontSize: 16
+                    ),
+                    decoration: InputDecoration(
+                      hintText: 'Name',
+                      hintStyle: TextStyle(color: Colors.white38),
+                      prefixIcon: Icon(
+                          Icons.person_2_outlined,
+                      color: Colors.white70,
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        borderSide: BorderSide(
+                          color: const Color.fromARGB(255, 3, 77, 188),
+                          width: 2
+                        )
+                      ),
+                        enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          width: 2,
+                          color: Colors.white70,
+                        ),
+                        borderRadius:BorderRadius.circular(20),
+
+                      )
+                    ),
+                  ),
+                  SizedBox(height:20-10 ,),
+
                          TextFormField(
                   style: TextStyle(
                       color: Colors.white70,
