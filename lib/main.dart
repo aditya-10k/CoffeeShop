@@ -1,4 +1,5 @@
 import 'package:coffee/firebase_options.dart';
+import 'package:coffee/pages/forgotpass.dart';
 import 'package:coffee/pages/homepage.dart';
 import 'package:coffee/pages/loginpage.dart';
 import 'package:coffee/pages/signup.dart';
@@ -28,6 +29,8 @@ class MyApp extends StatelessWidget {
       home: Widgettree(),
 initialRoute:'/login' ,
       routes: {
+
+       '/forgotpass' : (context) => ForgotPass(),
        '/login' : (context) => LoginPage(),
        '/signup' : (context) => Signup(),
        '/splash' : (context) => Splashs(),

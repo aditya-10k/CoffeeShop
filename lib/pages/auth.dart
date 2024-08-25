@@ -22,6 +22,12 @@ final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
     await _firebaseAuth.createUserWithEmailAndPassword(email: (mail), password: psk);
   }
   
+   Future<void> sendPasswordResetEmail({
+    required String mail,
+  }) async{
+    await _firebaseAuth.sendPasswordResetEmail(email: (mail));
+  }
+
   Future<void> signOut() async {
     await _firebaseAuth.signOut();
   }  

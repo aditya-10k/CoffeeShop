@@ -51,7 +51,7 @@ class _LoginPageState extends State<LoginPage> {
                 child: Center(
                   child: Container(
                     padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                    height: 370,
+                    height: 410,
                     width: 340,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
@@ -161,9 +161,28 @@ class _LoginPageState extends State<LoginPage> {
                                           return null ;
                                         },
                                       ),
+//SizedBox(height: -5,),
+                                  Align(
+                                        alignment: Alignment.topRight,
+                                        child: InkWell(
+                                                                    onTap: () { Navigator.pushNamed(context, '/forgotpass' );  },
+                                                                    child: Text(
+                                                                        'Forgot Password?',
+                                                                      style: TextStyle(
+                                                                        fontSize: 20-10,
+                                                                       
+                                                                        
+                                                              
+                                                                        color: const Color.fromARGB(255, 141, 140, 221),
+                                                                      ),
+                                                                    ),
+                                                              ),
+                                      ),
+                                      SizedBox(height: 10,),
                       
                                       Row(
                                         mainAxisAlignment: MainAxisAlignment.center,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                       Text(
                         'Dont have an account?  ,',
@@ -173,8 +192,8 @@ class _LoginPageState extends State<LoginPage> {
                       
                               ),
                       ),
-                      TextButton(
-                            onPressed: () { Navigator.pushNamed(context, '/signup' );  },
+                      InkWell(
+                            onTap: () { Navigator.pushNamed(context, '/signup' );  },
                             child: Text(
                                 'signup',
                               style: TextStyle(
@@ -188,7 +207,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                                         ],
                                       ),
-                                      
+                                      SizedBox(height: 10,),
 FilledButton(
   onPressed: () async {
     if (formKey.currentState!.validate()) {
