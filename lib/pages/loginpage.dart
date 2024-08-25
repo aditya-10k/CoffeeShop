@@ -192,8 +192,7 @@ class _LoginPageState extends State<LoginPage> {
 FilledButton(
   onPressed: () async {
     if (formKey.currentState!.validate()) {
-      // Show a loading indicator while signing in
-      ScaffoldMessenger.of(context).showSnackBar(
+      /*ScaffoldMessenger.of(context).showSnackBar(
         snackBarAnimationStyle: AnimationStyle(duration: Duration(seconds: 1)),
         SnackBar(
           backgroundColor: Colors.transparent ,
@@ -204,7 +203,7 @@ FilledButton(
             style: TextStyle(
               color: Colors.white70
             ),)),
-      );
+      );*/
 
       await signInWithEmailAndPassword(); 
     }
