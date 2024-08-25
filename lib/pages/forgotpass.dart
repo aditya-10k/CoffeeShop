@@ -72,7 +72,7 @@ class _ForgotPassState extends State<ForgotPass> {
                             style: GoogleFonts.robotoSlab(
                             fontWeight: FontWeight.bold,
                             color: Colors.white70,
-                            fontSize: 50
+                            fontSize: 35
                             ),
                           ),
                            SizedBox(height: 10+10,),
