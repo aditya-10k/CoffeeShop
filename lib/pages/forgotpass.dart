@@ -68,7 +68,7 @@ class _ForgotPassState extends State<ForgotPass> {
                         children: [
                           SizedBox(height: 10,),
                           Text(
-                            'Login',
+                            'Forgot Password',
                             style: GoogleFonts.robotoSlab(
                             fontWeight: FontWeight.bold,
                             color: Colors.white70,
