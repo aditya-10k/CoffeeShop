@@ -2,7 +2,6 @@ import 'package:coffee/pages/auth.dart';
 import 'package:coffee/pages/loginpage.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import  'auth.dart';
 
 class Homepage extends StatefulWidget {
    Homepage({super.key});

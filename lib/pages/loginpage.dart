@@ -23,6 +23,7 @@ class _LoginPageState extends State<LoginPage> {
   Future<void> signInWithEmailAndPassword() async{
     try {
       await Auth().signInWithEmailAndPassword(mail: mail.text, psk: psk.text);
+      Navigator.pushNamed(context, '/splash');
     } on FirebaseAuthException catch (e) {
       setState(() {
         errorMessage = e.message;
@@ -50,7 +51,7 @@ class _LoginPageState extends State<LoginPage> {
                 child: Center(
                   child: Container(
                     padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                    height: 350,
+                    height: 370,
                     width: 340,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
@@ -107,7 +108,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                                         ),
                                         validator: (mail){
-                      if(mail!.isEmpty ||!RegExp(r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$').hasMatch(mail!)){
+                      if(mail!.isEmpty ||!RegExp(r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$').hasMatch(mail)){
                         return'Enter valid E-mail';}
                         else
                           return null;
@@ -153,7 +154,12 @@ class _LoginPageState extends State<LoginPage> {
                             )
                         )
                                         ),
-                      
+                      validator: (psk){
+                                          if(psk!.length < 5)
+                                          {return "Password should be more than 6 characters" ;}
+                                          else
+                                          return null ;
+                                        },
                                       ),
                       
                                       Row(
@@ -182,15 +188,27 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                                         ],
                                       ),
-                                      FilledButton(onPressed: () {
-                        String mail_ = mail.text;
-                        String psk_ = psk.text;
-                        print('name $mail_ - password $psk_');
-                        if(formKey.currentState!.validate()){
-                          final snackBar = SnackBar(content:Text('LOADING'));
-                          signInWithEmailAndPassword();
-                        Navigator.pushNamed(context, '/splash');
-                        }},
+                                      
+FilledButton(
+  onPressed: () async {
+    if (formKey.currentState!.validate()) {
+      // Show a loading indicator while signing in
+      ScaffoldMessenger.of(context).showSnackBar(
+        snackBarAnimationStyle: AnimationStyle(duration: Duration(seconds: 1)),
+        SnackBar(
+          backgroundColor: Colors.transparent ,
+          content: Text(
+            textAlign: TextAlign.center,
+            
+            'Sign-in Successful!',
+            style: TextStyle(
+              color: Colors.white70
+            ),)),
+      );
+
+      await signInWithEmailAndPassword(); 
+    }
+  },
                       
                         child: Text(
                           'Log-in',
@@ -203,7 +221,13 @@ class _LoginPageState extends State<LoginPage> {
                           backgroundColor: WidgetStateProperty.all(Colors.brown[900]),
                         ),
                       ),
-                      Text(errorMessage == '' ? '' : 'Humm ? $errorMessage')
+                      Text(
+                        errorMessage == '' ? '' : ' $errorMessage',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.white70
+                        ),
+                        )
                         ],
                       ),
                     ),
@@ -217,4 +241,5 @@ class _LoginPageState extends State<LoginPage> {
            ),
     );
   }
+
 }

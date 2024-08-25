@@ -1,4 +1,5 @@
 import 'dart:ui';
+
 import 'package:coffee/pages/auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,8 @@ class Signup extends StatefulWidget {
 
 class _SignupState extends State<Signup> {
 
+
+
   String? errorMessage='';
   final formKey = GlobalKey<FormState>();
   var mail = TextEditingController();
@@ -25,6 +28,7 @@ class _SignupState extends State<Signup> {
       await Auth().createUserWithEmailAndPassword(
         mail : mail.text , psk: psk.text
       );
+      Navigator.pushNamed(context, '/splash');
     } on FirebaseAuthException catch(e) {
       setState(() {
         errorMessage = e.message;
@@ -138,7 +142,7 @@ class _SignupState extends State<Signup> {
                       ),
                                         ),
                                         validator: (mail){
-                      if(mail!.isEmpty ||!RegExp(r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$').hasMatch(mail!)){
+                      if(mail!.isEmpty ||!RegExp(r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$').hasMatch(mail)){
                         return'Enter valid E-mail';}
                         else
                           return null;
@@ -184,7 +188,12 @@ class _SignupState extends State<Signup> {
                             )
                         )
                                         ),
-                      
+                                        validator: (psk){
+                                          if(psk!.length < 5)
+                                          {return "Password should be more than 6 characters" ;}
+                                          else
+                                          return null ;
+                                        },
                                       ),
                       
                                       Row(
@@ -213,15 +222,26 @@ class _SignupState extends State<Signup> {
                       ),
                                         ],
                                       ),
-                                      FilledButton(onPressed: () {
+                                      FilledButton(onPressed: () async {
                         String mail_ = mail.text;
                         String psk_ = psk.text;
                         print('name $mail_ - password $psk_');
                         if(formKey.currentState!.validate()){
-                          final snackBar = SnackBar(content:Text('LOADING'));
-                          createUserWithEmailAndPassword();
-                        Navigator.pushNamed(context, '/splash');
-                        }},
+                          ScaffoldMessenger.of(context).showSnackBar(snackBarAnimationStyle: AnimationStyle(duration: Duration(seconds: 1) ),
+        SnackBar(
+          backgroundColor: Colors.transparent ,
+          content: Text(
+            textAlign: TextAlign.center,
+            
+            'Sign-up Successful!',
+            style: TextStyle(
+              color: Colors.white70
+            ),)),
+      );
+                        await createUserWithEmailAndPassword();
+                        
+                        }
+                        },
                       
                         child: Text(
                           'Sign-up',
