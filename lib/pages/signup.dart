@@ -151,7 +151,7 @@ class _SignupState extends State<Signup> {
                                       SizedBox(height: 10,),
                                       TextFormField(
                                         style: TextStyle(
-                      color: Colors.white38,
+                      color: Colors.white70,
                       fontSize: 16,
                                         ),
                                         controller: psk,

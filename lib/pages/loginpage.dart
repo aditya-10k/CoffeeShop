@@ -55,7 +55,8 @@ class _LoginPageState extends State<LoginPage> {
                     width: 340,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-                      border: Border.all(width: 1,color: Colors.black38),
+                      border: Border.all(width: 1,color: Colors.black38
+                    ),
                     color: Colors.black38.withOpacity(0.6),
                     ),
 
@@ -117,7 +118,7 @@ class _LoginPageState extends State<LoginPage> {
                                       SizedBox(height: 10,),
                                       TextFormField(
                                         style: TextStyle(
-                      color: Colors.white38,
+                      color: Colors.white70,
                       fontSize: 16,
                                         ),
                                         controller: psk,

@@ -136,7 +136,7 @@ FilledButton(onPressed: () async {
                         },
                       
                         child: Text(
-                          'Sign-up',
+                          'Send Email',
                           style: TextStyle(
                           color: Colors.white70,
                             fontSize: 20,
