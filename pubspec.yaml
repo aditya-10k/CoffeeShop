@@ -38,6 +38,9 @@ dependencies:
   google_fonts: ^6.2.1
   firebase_core: ^3.3.0
   firebase_auth: ^5.1.4
+  google_nav_bar: ^5.0.6
+  icons_plus: ^5.0.0
+  curved_navigation_bar: ^1.0.6
 
 dev_dependencies:
   flutter_test:
@@ -66,6 +69,12 @@ flutter:
     - assets\download.jpeg
     - assets\Designer (2).jpeg
     - assets\Designer (3).jpeg
+    - assets\menu board.png
+    - assets\Con Panna.png
+    - assets\download.png
+    - assets\sss.png
+    - assets\download (1).png
+    - assets\download (2).png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

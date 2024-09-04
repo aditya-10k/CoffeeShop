@@ -4,9 +4,9 @@ import 'package:coffee/pages/homepage.dart';
 import 'package:coffee/pages/loginpage.dart';
 import 'package:coffee/pages/signup.dart';
 import 'package:coffee/pages/splashs.dart';
+import 'package:coffee/widgettree.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:coffee/widgettree.dart';
 
 
 Future<void> main() async {

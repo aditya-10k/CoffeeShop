@@ -53,7 +53,7 @@ class _SplashsState extends State<Splashs> with SingleTickerProviderStateMixin {
                 shape: BoxShape.circle,
                 image: DecorationImage(
                   opacity: 0.8,
-                  image: AssetImage('assets/Designer (3).jpeg'),
+                  image: AssetImage('assets/download (2).png'),
                   fit: BoxFit.contain,
                 ),
               ),

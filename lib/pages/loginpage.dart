@@ -246,15 +246,18 @@ FilledButton(
                         style: TextStyle(
                           color: Colors.white70
                         ),
-                        )
+                        ),
+                       
                         ],
                       ),
                     ),
                   ),
+                  
                 ),
               ),
             ),
              backgroundColor: Colors.transparent,
+             floatingActionButton: FloatingActionButton(onPressed: (){Navigator.pushNamed(context, '/homepage');}),
             ), 
           
            ),
