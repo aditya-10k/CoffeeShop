@@ -23,18 +23,30 @@ class _SignupState extends State<Signup> {
   var psk = TextEditingController();
   bool obscuretext = true;
 
-  Future<void> createUserWithEmailAndPassword() async {
-    try {
-      await Auth().createUserWithEmailAndPassword(
-        mail : mail.text , psk: psk.text
-      );
-      Navigator.pushNamed(context, '/splash');
-    } on FirebaseAuthException catch(e) {
-      setState(() {
-        errorMessage = e.message;
-      });
-    }
+ Future<void> createUserWithEmailAndPassword() async {
+  try {
+    // Create the user
+    UserCredential userCredential = await Auth().createUserWithEmailAndPassword(
+      mail: mail.text,
+      psk: psk.text,
+    );
+
+    // Get the current user
+    User? user = userCredential.user;
+
+    // Update the user profile with the name
+    await user?.updateDisplayName(name.text);
+    await user?.reload();  // Reload the user data to reflect the updated profile
+
+    // After successful signup, navigate to splash screen
+    Navigator.pushNamed(context, '/splash');
+  } on FirebaseAuthException catch (e) {
+    setState(() {
+      errorMessage = e.message;
+    });
   }
+}
+
 
   @override
   Widget build(BuildContext context) {

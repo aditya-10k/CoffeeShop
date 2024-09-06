@@ -1,4 +1,9 @@
 import 'package:coffee/pages/auth.dart';
+import 'package:coffee/pages/in-app%20pages/CartPage.dart';
+import 'package:coffee/pages/in-app%20pages/GenPage.dart';
+import 'package:coffee/pages/in-app%20pages/MenuPage.dart';
+import 'package:coffee/pages/in-app%20pages/OfferPage.dart';
+import 'package:coffee/pages/in-app%20pages/ProfilePage.dart';
 import 'package:coffee/pages/loginpage.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -18,14 +23,27 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
+
+  int curindex = 0;
+
+  List <Widget> pagewidgets = 
+  [
+    genpage(),
+    Menupage(),
+    offerpage(),
+    cartpage(),
+    ProfilePage(),
+
+  ];
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: const Color.fromARGB(255, 179, 141, 127),
+        backgroundColor: const Color.fromARGB(255, 208, 184, 168),
         appBar: AppBar(
 
-          backgroundColor: const Color.fromARGB(255, 179, 141, 127),
+          backgroundColor: const Color.fromARGB(255, 208, 184, 168),
           elevation: 0,
           
         ),
@@ -65,7 +83,14 @@ class _HomepageState extends State<Homepage> {
         ),
         bottomNavigationBar: CurvedNavigationBar(
                 height: 55,
-                backgroundColor: const Color.fromARGB(255, 179, 141, 127),
+                onTap: (index)
+                {
+                  setState(() {
+                    curindex = index;
+                  });
+                },
+                
+                backgroundColor: const Color.fromARGB(255, 208, 184, 168),
                 color: Color.fromARGB(255, 63, 45, 45) ,
                 animationDuration: Duration(milliseconds: 300),
                 
@@ -79,6 +104,8 @@ class _HomepageState extends State<Homepage> {
                 
                 
               ]),
+
+              body: SafeArea(child: pagewidgets[curindex]),
             ),
           );
     
