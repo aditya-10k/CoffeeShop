@@ -80,7 +80,7 @@ class _LoginPageState extends State<LoginPage> {
                            
                       
                            TextFormField(
-                                        style: TextStyle(
+                                        style: GoogleFonts.robotoSlab(
                         color: Colors.white70,
                       fontSize: 16
                                         ),
@@ -91,7 +91,7 @@ class _LoginPageState extends State<LoginPage> {
                         color: Colors.white70,
                       ),
                         hintText:'Email' ,
-                        hintStyle: TextStyle(color: Colors.white38),
+                        hintStyle: GoogleFonts.robotoSlab(color: Colors.white38),
                       //focusColor: Colors.cyan,
                       focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20),
@@ -117,7 +117,7 @@ class _LoginPageState extends State<LoginPage> {
                                       ),
                                       SizedBox(height: 10,),
                                       TextFormField(
-                                        style: TextStyle(
+                                        style: GoogleFonts.robotoSlab(
                       color: Colors.white70,
                       fontSize: 16,
                                         ),
@@ -129,7 +129,7 @@ class _LoginPageState extends State<LoginPage> {
                             color: Colors.white70,
                       ),
                                          hintText:'Password' ,
-                                         hintStyle: TextStyle(color: Colors.white38),
+                                         hintStyle: GoogleFonts.robotoSlab(color: Colors.white38),
                       suffixIcon: IconButton(
                          onPressed: () { setState(() {
                            obscuretext = !obscuretext;
@@ -169,7 +169,7 @@ class _LoginPageState extends State<LoginPage> {
                                                                     onTap: () { Navigator.pushNamed(context, '/forgotpass' );  },
                                                                     child: Text(
                                                                         'Forgot Password?',
-                                                                      style: TextStyle(
+                                                                      style: GoogleFonts.robotoSlab(
                                                                         fontSize: 20-10,
                                                                        
                                                                         
@@ -187,7 +187,7 @@ class _LoginPageState extends State<LoginPage> {
                                         children: [
                       Text(
                         'Dont have an account?  ,',
-                        style: TextStyle(
+                        style: GoogleFonts.robotoSlab(
                                 fontSize: 20-5,
                                 color: Colors.white70,
                       
@@ -197,7 +197,7 @@ class _LoginPageState extends State<LoginPage> {
                             onTap: () { Navigator.pushNamed(context, '/signup' );  },
                             child: Text(
                                 'signup',
-                              style: TextStyle(
+                              style: GoogleFonts.robotoSlab(
                                 fontSize: 20-5,
                                
                                 
@@ -231,7 +231,7 @@ FilledButton(
                       
                         child: Text(
                           'Log-in',
-                          style: TextStyle(
+                          style: GoogleFonts.robotoSlab(
                           color: Colors.white70,
                             fontSize: 20,
                           ),
@@ -243,7 +243,7 @@ FilledButton(
                       Text(
                         errorMessage == '' ? '' : ' $errorMessage',
                         textAlign: TextAlign.center,
-                        style: TextStyle(
+                        style: GoogleFonts.robotoSlab(
                           color: Colors.white70
                         ),
                         ),

@@ -94,13 +94,13 @@ class _SignupState extends State<Signup> {
                       
                           TextFormField(
                       controller: name,
-                      style: TextStyle(
+                      style: GoogleFonts.robotoSlab(
                         color: Colors.white70,
                         fontSize: 16
                       ),
                       decoration: InputDecoration(
                         hintText: 'Name',
-                        hintStyle: TextStyle(color: Colors.white38),
+                        hintStyle: GoogleFonts.robotoSlab(color: Colors.white38),
                         prefixIcon: Icon(
                             Icons.person_2_outlined,
                         color: Colors.white70,
@@ -125,7 +125,7 @@ class _SignupState extends State<Signup> {
                                         SizedBox(height:20-10 ,),
                       
                            TextFormField(
-                                        style: TextStyle(
+                                        style: GoogleFonts.robotoSlab(
                         color: Colors.white70,
                       fontSize: 16
                                         ),
@@ -136,7 +136,7 @@ class _SignupState extends State<Signup> {
                         color: Colors.white70,
                       ),
                         hintText:'Email' ,
-                        hintStyle: TextStyle(color: Colors.white38),
+                        hintStyle: GoogleFonts.robotoSlab(color: Colors.white38),
                       //focusColor: Colors.cyan,
                       focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20),
@@ -162,7 +162,7 @@ class _SignupState extends State<Signup> {
                                       ),
                                       SizedBox(height: 10,),
                                       TextFormField(
-                                        style: TextStyle(
+                                        style: GoogleFonts.robotoSlab(
                       color: Colors.white70,
                       fontSize: 16,
                                         ),
@@ -174,7 +174,7 @@ class _SignupState extends State<Signup> {
                             color: Colors.white70,
                       ),
                                          hintText:'Password' ,
-                                         hintStyle: TextStyle(color: Colors.white38),
+                                         hintStyle: GoogleFonts.robotoSlab(color: Colors.white38),
                       suffixIcon: IconButton(
                          onPressed: () { setState(() {
                            obscuretext = !obscuretext;
@@ -213,7 +213,7 @@ class _SignupState extends State<Signup> {
                                         children: [
                       Text(
                         'Already have an account  ,',
-                        style: TextStyle(
+                        style: GoogleFonts.robotoSlab(
                                 fontSize: 20-5,
                                 color: Colors.white70,
                       
@@ -223,7 +223,7 @@ class _SignupState extends State<Signup> {
                             onPressed: () { Navigator.pushNamed(context, '/login' );  },
                             child: Text(
                                 'login',
-                              style: TextStyle(
+                              style: GoogleFonts.robotoSlab(
                                 fontSize: 20-5,
                                
                                 
@@ -246,7 +246,7 @@ class _SignupState extends State<Signup> {
             textAlign: TextAlign.center,
             
             'Sign-up Successful!',
-            style: TextStyle(
+            style: GoogleFonts.robotoSlab(
               color: Colors.white70
             ),)),
       );
@@ -257,7 +257,7 @@ class _SignupState extends State<Signup> {
                       
                         child: Text(
                           'Sign-up',
-                          style: TextStyle(
+                          style: GoogleFonts.robotoSlab(
                           color: Colors.white70,
                             fontSize: 20,
                           ),

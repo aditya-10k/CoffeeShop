@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class genpage extends StatefulWidget {
   const genpage({super.key});
@@ -28,41 +29,33 @@ class _genpageState extends State<genpage> {
       });
     }
   }
-  List <Color> cl =[ Color.fromARGB(255, 63, 45, 45) ,Color.fromARGB(255, 152, 112, 112)];
+  List <Color> cl =[ Color.fromARGB(255, 63, 45, 45) /*,Color.fromARGB(255, 152, 112, 112)*/];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 208, 184, 168),
-      body: Column(
-        
-        children: [
-
-          Row(
-            children: [
-              SizedBox(width: 10,),
-              Container(
-                padding: EdgeInsets.fromLTRB(10, 20, 10, 20),
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(colors: cl ),
-                  color: Color.fromARGB(255, 63, 45, 45),
-                  borderRadius: BorderRadius.circular(30)
+      body: Row(mainAxisAlignment: MainAxisAlignment.center ,
+                children:[ Container(
+                  padding: EdgeInsets.fromLTRB(10, 20, 10, 20),
+                  child: 
+                    user != null && user!.displayName != null
+                      ? Text("Welcome , ${user!.displayName} !" ,
+                      style: GoogleFonts.robotoSlab(
+                        color: Color.fromARGB(255, 63, 45, 45),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20-3
+                      ),)
+                      : Text("Welcome Guest!" ,
+                      style: GoogleFonts.robotoSlab(
+                        color: Color.fromARGB(255, 63, 45, 45),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20-3
+                      ),),
+                  
                 ),
-                child: 
-                  user != null && user!.displayName != null
-                    ? Text("Welcome! , ${user!.displayName}" ,
-                    style: TextStyle(
-                      color: Colors.white70,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20-5
-                    ),)
-                    : const Text("nil"),
-                
+                ]
               ),
-            ],
-          ),
-        ],
-      )
     );
   }
 }

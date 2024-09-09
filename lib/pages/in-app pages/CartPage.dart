@@ -12,7 +12,11 @@ class _cartpageState extends State<cartpage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 208, 184, 168),
-      body: Center(child: Text('cart page')),
+      body: Column(
+        children: [
+          
+        ],
+      ),
     );
   }
 }

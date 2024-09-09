@@ -8,6 +8,7 @@ import 'package:coffee/pages/loginpage.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Homepage extends StatefulWidget {
    Homepage({super.key});
@@ -69,7 +70,7 @@ class _HomepageState extends State<Homepage> {
               ListTile(
                 leading: Icon(Icons.exit_to_app_outlined,color: Colors.white70,),
                 title: Text('Logout',
-                style: TextStyle(
+                style: GoogleFonts.robotoSlab(
                   color: Colors.white70,
                   fontSize: 20
                 ),),

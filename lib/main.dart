@@ -5,8 +5,10 @@ import 'package:coffee/pages/loginpage.dart';
 import 'package:coffee/pages/signup.dart';
 import 'package:coffee/pages/splashs.dart';
 import 'package:coffee/widgettree.dart';
+import 'package:coffee/workingcomps/cartfunc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 
 Future<void> main() async {
@@ -24,9 +26,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return ChangeNotifierProvider(
+      create: (context) => Cartfunc(),
+      builder: (context,child) =>MaterialApp(
+      
       debugShowCheckedModeBanner: false,
-      home: Widgettree(),
+      home: const Widgettree(),
 initialRoute:'/login' ,
       routes: {
 
@@ -36,6 +41,7 @@ initialRoute:'/login' ,
        '/splash' : (context) => Splashs(),
        '/homepage' : (context) => Homepage(),
       },
+      )
     );
   }
 }
