@@ -31,5 +31,9 @@ class Cartfunc extends ChangeNotifier{
     _usercart.remove(coffee);
     notifyListeners();
   }
-}
 
+  double get totalCost 
+  {
+    return _usercart.fold(0, (sum, item) => sum + item.price);
+}
+}

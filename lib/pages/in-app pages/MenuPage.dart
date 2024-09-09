@@ -51,8 +51,21 @@ class _MenupageState extends State<Menupage> {
 
                     return Coffetile(
                       coffee: eachitem,
+                      icon: Icon(Icons.add),
                       onPressed:() => additem(eachitem),);
                   })
+                ),
+
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Text(
+                    'Total Cost: ₹${value.totalCost.toStringAsFixed(2)}', // Formats the total cost to 2 decimal places
+                    style: GoogleFonts.robotoSlab(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: const Color.fromARGB(255, 63, 45, 45),
+                    )
+                  )
                 )
               ],
             ),

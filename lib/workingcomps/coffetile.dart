@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 class Coffetile extends StatelessWidget {
   final Coffeelist coffee;
+  final Widget icon ;
   void Function()? onPressed;
-   Coffetile({super.key, required this.coffee, required this.onPressed});
+   Coffetile({super.key, required this.coffee, required this.onPressed,required this.icon});
 
 
   @override
@@ -30,7 +31,7 @@ class Coffetile extends StatelessWidget {
         ),
         ),
         leading: Image.asset(coffee.imgadd , height: 100,),
-        trailing: IconButton.outlined(onPressed: onPressed, icon: Icon(Icons.add),
+        trailing: IconButton.outlined(onPressed: onPressed, icon: icon,
         color: Color.fromARGB(255, 208, 184, 168),
         highlightColor: Colors.lightGreenAccent[400],),
       ),
