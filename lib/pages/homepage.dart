@@ -92,16 +92,16 @@ class _HomepageState extends State<Homepage> {
                 },
                 
                 backgroundColor: Colors.white,
-                color: Colors.black ,
+                color: Color.fromARGB(255, 0, 112, 72),
                 animationDuration: Duration(milliseconds: 300),
                 
                 items: [
               
-               Image.asset('assets/Con Panna.png' ,height: 35, alignment: Alignment.bottomCenter,), 
-               Image.asset('assets/menu board.png' ,height: 35,),
-               Image.asset('assets/download.png', height: 35,),
-               Image.asset('assets/download (1).png', height: 35,),
-               Image.asset('assets/sss.png', height: 35,)
+               Image.asset('lib/workingcomps/imgloc/cup.png' ,height: 35, alignment: Alignment.bottomCenter,), 
+               Image.asset('lib/workingcomps/imgloc/menu.png' ,height: 35,),
+               Image.asset('lib/workingcomps/imgloc/coupon.png', height: 35,),
+               Image.asset('lib/workingcomps/imgloc/bag.png', height: 35,),
+               Image.asset('lib/workingcomps/imgloc/profile.png', height: 35,)
                 
                 
               ]),
