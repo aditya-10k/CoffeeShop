@@ -37,7 +37,7 @@ class _ForgotPassState extends State<ForgotPass> {
           child: Container(
             alignment: Alignment.center,
             decoration: BoxDecoration(
-              image: DecorationImage(image: AssetImage("assets/Designer (2).jpeg"),
+              image: DecorationImage(image: AssetImage("assets/Designer (6).jpeg"),
               fit: BoxFit.fitHeight
               ),   
             ),
@@ -48,7 +48,7 @@ class _ForgotPassState extends State<ForgotPass> {
               ),
             body: ClipRRect(
               child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 3,sigmaY: 3),
+                filter: ImageFilter.blur(sigmaX: 0,sigmaY: 0),
                 child: Center(
                   child: Container(
                     padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
@@ -143,7 +143,7 @@ FilledButton(onPressed: () async {
                           ),
                         ),
                         style: ButtonStyle(
-                          backgroundColor: WidgetStateProperty.all(Colors.brown[900]),
+                          backgroundColor: WidgetStateProperty.all(Color.fromARGB(255, 0, 112, 72)),
                         ),
                       ),
 

@@ -12,7 +12,7 @@ class Coffetile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Color.fromARGB(255, 63, 45, 45),
+        color: Color.fromARGB(255, 0, 112, 72),
         borderRadius: BorderRadius.circular(10)
       ),
       margin: EdgeInsets.fromLTRB(5, 0, 5, 10),
@@ -20,19 +20,19 @@ class Coffetile extends StatelessWidget {
       child: ListTile(
         title: Text(coffee.name,
         style: GoogleFonts.robotoSlab(
-          color: Colors.white70,
+          color: Colors.white,
           fontWeight: FontWeight.bold
         ),
         ),
         subtitle: Text('₹${coffee.price}',
         style: GoogleFonts.robotoSlab(
-          color: Colors.white70,
+          color: Colors.white,
           fontWeight: FontWeight.bold
         ),
         ),
         leading: Image.asset(coffee.imgadd , height: 100,),
         trailing: IconButton.outlined(onPressed: onPressed, icon: icon,
-        color: Color.fromARGB(255, 208, 184, 168),
+        color: Colors.white,
         highlightColor: Colors.lightGreenAccent[400],),
       ),
     );

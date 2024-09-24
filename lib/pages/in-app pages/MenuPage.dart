@@ -24,7 +24,7 @@ class _MenupageState extends State<Menupage> {
     return Consumer<Cartfunc>(
       builder : (context,value , child) => SafeArea(
         child: Scaffold(
-          backgroundColor: const Color.fromARGB(255, 208, 184, 168),
+          backgroundColor:Colors.white,
           body: Padding(
             padding: const EdgeInsets.all(10.0),
             child: Column(
@@ -36,7 +36,7 @@ class _MenupageState extends State<Menupage> {
                   style: GoogleFonts.robotoSlab(
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 63, 45, 45)
+                    color: Colors.black
                   
                   ),),
                 ),
@@ -63,7 +63,7 @@ class _MenupageState extends State<Menupage> {
                     style: GoogleFonts.robotoSlab(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
-                      color: const Color.fromARGB(255, 63, 45, 45),
+                      color: Colors.black,
                     )
                   )
                 )

@@ -11,7 +11,7 @@ class _offerpageState extends State<offerpage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 208, 184, 168),
+      backgroundColor: Colors.white,
       body: Center(child: Text('offer page')),
     );
   }

@@ -32,7 +32,7 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+      backgroundColor: Colors.white,
       body: Center(
         child: user != null && user!.displayName != null
             ? Text("Welcome! , ${user!.displayName}")

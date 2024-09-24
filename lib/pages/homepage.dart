@@ -41,15 +41,15 @@ class _HomepageState extends State<Homepage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: const Color.fromARGB(255, 208, 184, 168),
+        backgroundColor:  Colors.white,
         appBar: AppBar(
 
-          backgroundColor: const Color.fromARGB(255, 208, 184, 168),
+          backgroundColor: Color.fromARGB(255, 0, 112, 72),
           elevation: 0,
           
         ),
         drawer: Drawer(
-          backgroundColor:Color.fromARGB(255, 63, 45, 45) ,
+          backgroundColor:Color.fromARGB(255, 0, 112, 72) ,
           child: ListView(
             children: [
               DrawerHeader(child: Center(
@@ -71,7 +71,7 @@ class _HomepageState extends State<Homepage> {
                 leading: Icon(Icons.exit_to_app_outlined,color: Colors.white70,),
                 title: Text('Logout',
                 style: GoogleFonts.robotoSlab(
-                  color: Colors.white70,
+                  color: Colors.white,
                   fontSize: 20
                 ),),
                 onTap: () async {
@@ -91,8 +91,8 @@ class _HomepageState extends State<Homepage> {
                   });
                 },
                 
-                backgroundColor: const Color.fromARGB(255, 208, 184, 168),
-                color: Color.fromARGB(255, 63, 45, 45) ,
+                backgroundColor: Colors.white,
+                color: Colors.black ,
                 animationDuration: Duration(milliseconds: 300),
                 
                 items: [

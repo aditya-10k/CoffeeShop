@@ -29,12 +29,12 @@ class _genpageState extends State<genpage> {
       });
     }
   }
-  List <Color> cl =[ Color.fromARGB(255, 63, 45, 45) /*,Color.fromARGB(255, 152, 112, 112)*/];
+  List <Color> cl =[ Colors.black /*,Color.fromARGB(255, 152, 112, 112)*/];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 208, 184, 168),
+      backgroundColor: Colors.white,
       body: Row(mainAxisAlignment: MainAxisAlignment.center ,
                 children:[ Container(
                   padding: EdgeInsets.fromLTRB(10, 20, 10, 20),
@@ -42,13 +42,13 @@ class _genpageState extends State<genpage> {
                     user != null && user!.displayName != null
                       ? Text("Welcome , ${user!.displayName} !" ,
                       style: GoogleFonts.robotoSlab(
-                        color: Color.fromARGB(255, 63, 45, 45),
+                        color: Colors.black,
                         fontWeight: FontWeight.bold,
                         fontSize: 20-3
                       ),)
                       : Text("Welcome Guest!" ,
                       style: GoogleFonts.robotoSlab(
-                        color: Color.fromARGB(255, 63, 45, 45),
+                        color: Colors.black,
                         fontWeight: FontWeight.bold,
                         fontSize: 20-3
                       ),),
