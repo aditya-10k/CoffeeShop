@@ -16,7 +16,7 @@ class _SplashsState extends State<Splashs> with SingleTickerProviderStateMixin {
     super.initState();
     SystemChrome.setEnabledSystemUIMode((SystemUiMode.immersive));
     Future.delayed(const Duration(milliseconds:600 ), (){
-      Navigator.pushNamed(context, '/homepage');});
+      Navigator.pushNamed(context, '/login');});
     
    @override
    void dispose(){
@@ -35,9 +35,10 @@ class _SplashsState extends State<Splashs> with SingleTickerProviderStateMixin {
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                Color.fromARGB(255, 128, 59, 35),
-                Color.fromARGB(255, 63, 45, 45),
-                Colors.black
+                //Colors.white,
+                Color.fromARGB(255, 0, 112, 72),
+                Color.fromARGB(255, 0, 112, 72),
+                //Colors.black
               ],
               begin: Alignment.topRight,
               end: Alignment.bottomLeft,

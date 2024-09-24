@@ -39,7 +39,7 @@ class _SignupState extends State<Signup> {
     await user?.reload();  // Reload the user data to reflect the updated profile
 
     // After successful signup, navigate to splash screen
-    Navigator.pushNamed(context, '/splash');
+    Navigator.pushNamed(context, '/homepage');
   } on FirebaseAuthException catch (e) {
     setState(() {
       errorMessage = e.message;

@@ -23,7 +23,7 @@ class _LoginPageState extends State<LoginPage> {
   Future<void> signInWithEmailAndPassword() async{
     try {
       await Auth().signInWithEmailAndPassword(mail: mail.text, psk: psk.text);
-      Navigator.pushNamed(context, '/splash');
+      Navigator.pushNamed(context, '/homepage');
     } on FirebaseAuthException catch (e) {
       setState(() {
         errorMessage = e.message;

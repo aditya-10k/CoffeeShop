@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
       
       debugShowCheckedModeBanner: false,
       home: const Widgettree(),
-initialRoute:'/login' ,
+initialRoute:'/splash' ,
       routes: {
 
        '/forgotpass' : (context) => ForgotPass(),
