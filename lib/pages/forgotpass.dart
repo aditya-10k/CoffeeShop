@@ -23,7 +23,7 @@ class _ForgotPassState extends State<ForgotPass> {
       await Auth().sendPasswordResetEmail(
         mail : mail.text
       );
-      Navigator.pushNamed(context, '/login');
+     await Navigator.pushNamed(context, '/login');
     } on FirebaseAuthException catch(e) {
       setState(() {
         errorMessage = e.message;
@@ -31,6 +31,11 @@ class _ForgotPassState extends State<ForgotPass> {
     }
   }
 
+@override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return SafeArea(

@@ -25,53 +25,72 @@ class _MenupageState extends State<Menupage> {
       builder : (context,value , child) => SafeArea(
         child: Scaffold(
           backgroundColor:Colors.white,
-          body: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Column(
-              children: [
-                Padding(
-                  
-                  padding: const EdgeInsets.fromLTRB(10,0,10,0),
-                  child: Text("Bold Brews & Sweet Treats",
-                  style: GoogleFonts.robotoSlab(
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black
-                  
-                  ),),
-                ),
-                SizedBox(height: 10,),
-
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: value.items.length,
-                    itemBuilder: (context , index)
-                    {
-                    var eachitem = value.items[index];
-
-                    return Coffetile(
-                      coffee: eachitem,
-                      icon: Icon(Icons.add),
-                      onPressed:() => additem(eachitem),);
-                  })
-                ),
-
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Text(
-                    'Total Cost: ₹${value.totalCost.toStringAsFixed(2)}', // Formats the total cost to 2 decimal places
+          body: Stack(
+            children: [
+             Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Column(
+                children: [
+                  Padding(
+                    
+                    padding: const EdgeInsets.fromLTRB(10,0,10,0),
+                    child: Text("Bold Brews & Sweet Treats",
                     style: GoogleFonts.robotoSlab(
-                      fontSize: 20,
+                      fontSize: 25,
                       fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    )
+                      color: Colors.black
+                    
+                    ),),
+                  ),
+                  SizedBox(height: 10,),
+            
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: value.items.length,
+                      itemBuilder: (context , index)
+                      {
+                      var eachitem = value.items[index];
+            
+                      return Coffetile(
+                        coffee: eachitem,
+                        icon: Icon(Icons.add),
+                        onPressed:() => additem(eachitem),);
+                    })
+                  ),
+                ]
+              )
+             ),
+                  if(value.totalCost !=0)
+                  Positioned(
+                    bottom: 0,
+                    left: MediaQuery.of(context).size.width/2-100,
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Container(
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                          color: Color.fromARGB(255, 0, 85, 55).withOpacity(0.9)
+                        ),
+                        child: Text(
+                          'Total Cost: ₹${value.totalCost.toStringAsFixed(2)}',
+                          style: GoogleFonts.robotoSlab(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          )
+                        ),
+                      )
+                    ),
                   )
-                )
-              ],
+                   
+            
+                ],
+              ),
             ),
           )
-        ),
-      ),
-    );
+        )
+
+    ;
   }
 }
