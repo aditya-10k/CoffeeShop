@@ -12,7 +12,10 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-  int curindex = 0;
+
+  int currentindex = 0;
+
+ final PageController _controller = PageController(initialPage: 0);
 
   List<Widget> pagewidgets = [
     genpage(),
@@ -27,6 +30,19 @@ class _HomepageState extends State<Homepage> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
+
+           body:  
+            PageView(
+        children: pagewidgets,
+        controller: _controller ,
+        onPageChanged: (index){
+          setState(() {
+            currentindex = index;
+            
+          
+          });
+        },
+      ),
          
           bottomNavigationBar: 
                Container(
@@ -42,10 +58,12 @@ class _HomepageState extends State<Homepage> {
                     color: Colors.grey.shade400,
                     backgroundColor: Color.fromARGB(255, 0, 112, 72),
                     padding: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+                    selectedIndex: currentindex,
                     duration: Duration(milliseconds: 400),
                     onTabChange: (index) {
                       setState(() {
-                        curindex = index;
+                        currentindex = index;
+                        _controller.jumpToPage(index);
                       });
                     },
                     tabs: [
@@ -80,7 +98,7 @@ class _HomepageState extends State<Homepage> {
                         ),
                       ),
                       GButton(
-                        icon: Bootstrap.person_circle,
+                        icon: Bootstrap.person_fill,
                         text: 'Profile',
                         iconSize: 38,
                         iconActiveColor: Colors.white,
@@ -92,11 +110,18 @@ class _HomepageState extends State<Homepage> {
                ),
          
        
-            body: pagewidgets[curindex], 
+           
             
           
         
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _controller.dispose();
+    super.dispose();
   }
 }

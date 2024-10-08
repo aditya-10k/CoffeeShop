@@ -1,6 +1,7 @@
 import 'package:coffee/firebase_options.dart';
 import 'package:coffee/pages/forgotpass.dart';
 import 'package:coffee/pages/homepage.dart';
+import 'package:coffee/pages/in-app%20pages/MenuPage.dart';
 import 'package:coffee/pages/loginpage.dart';
 import 'package:coffee/pages/signup.dart';
 import 'package:coffee/pages/splashs.dart';
@@ -40,6 +41,7 @@ initialRoute:'/splash' ,
        '/signup' : (context) => Signup(),
        '/splash' : (context) => Splashs(),
        '/homepage' : (context) => Homepage(),
+       '/menu' : (context) => Menupage(),
       },
       )
     );
