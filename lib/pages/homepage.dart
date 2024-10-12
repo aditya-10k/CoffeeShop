@@ -18,7 +18,7 @@ class _HomepageState extends State<Homepage> {
  final PageController _controller = PageController(initialPage: 0);
 
   List<Widget> pagewidgets = [
-    genpage(),
+    GenPage(),
     Menupage(),
    
     cartpage(),

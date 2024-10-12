@@ -36,7 +36,8 @@ class _DrinksdataState extends State<Drinksdata> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Expanded(
+        SizedBox(
+          height: 450,
           child: FutureBuilder(
           future: getdrinkapi(), 
           builder: (context , snapshot)
@@ -47,12 +48,37 @@ class _DrinksdataState extends State<Drinksdata> {
             }
             else
             {
-              return ListView.builder(
+              return Expanded(
+            child: GridView.builder(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+    crossAxisCount: 2, 
+    childAspectRatio: 0.68, 
+  ),
+               
               itemCount: drinklist.length,
-              itemBuilder: (context , index)
-              {
-                return Text(drinklist[index].title.toString());
-              });
+              itemBuilder: (context, index) {
+                return Container(
+                  margin: EdgeInsets.all(8.0), 
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Image.network(
+                          drinklist[index].image ?? 'https://via.placeholder.com/150',
+                          fit: BoxFit.cover,
+                          width: double.infinity,
+                          
+                        ),
+                      ),
+                      
+                      
+                    ],
+                  ),
+                );
+              },
+            ),
+              );
             }
           }),
         ),
