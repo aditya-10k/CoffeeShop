@@ -1,3 +1,4 @@
+import 'package:coffee/workingcomps/drinksdata.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -121,7 +122,7 @@ class _genpageState extends State<genpage> {
               
                      Padding(
                        padding: const EdgeInsets.fromLTRB(20, 5, 20, 10),
-                       child: Text("Our Community" ,
+                       child: Text("What would you like?" ,
                        textAlign: TextAlign.left,
                                 style: GoogleFonts.robotoSlab(
                                   color: Colors.black,
@@ -134,44 +135,7 @@ class _genpageState extends State<genpage> {
 
                 SizedBox(height: 20,),
 
-                  Expanded(
-                    child: GridView.custom(
-                      gridDelegate: SliverQuiltedGridDelegate(
-                        crossAxisCount: 4,
-                        mainAxisSpacing: 4,
-                        crossAxisSpacing: 4,
-                        repeatPattern: QuiltedGridRepeatPattern.inverted,
-                        pattern: [
-                          QuiltedGridTile(2, 2),
-                          QuiltedGridTile(1, 1),
-                          QuiltedGridTile(1, 1),
-                          QuiltedGridTile(1, 2),
-                        ],
-                      ),
-                      childrenDelegate: SliverChildBuilderDelegate(
-                        (context, index) {
-                          final imagePaths = [
-                              'assets/img1.jpeg',
-                              'assets/img2.jpeg',
-                              'assets/img3.jpeg',
-                              'assets/img4.jpeg',
-                            
-                          ];
-                          return Padding(
-                            
-                            padding: const EdgeInsets.all(4.0),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(10),
-                            
-                              child: Image.asset(imagePaths[index % imagePaths.length],
-                              fit: BoxFit.cover,),
-                            ),
-                          );
-                        },
-                        childCount: 4,
-                      ),
-                    ),
-                  )
+                  Expanded(child: Drinksdata()),
 
         ],
       ),
