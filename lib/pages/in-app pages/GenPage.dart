@@ -241,6 +241,19 @@ class _GenPageState extends State<GenPage> {
             ),
             SizedBox(height: 30,),
             Drinksdata(),
+
+            SizedBox(height: 30,),
+
+            Text(
+                "That is all we have",
+                textAlign: TextAlign.left,
+                style: GoogleFonts.robotoSlab(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 25,
+                ),
+              ),
+
             
           ],
         ),
