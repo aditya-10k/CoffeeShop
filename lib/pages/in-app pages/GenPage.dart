@@ -38,18 +38,19 @@ class _GenPageState extends State<GenPage> {
     List<BeverageModel> drinklist = [];
 
   Future<List<BeverageModel>> getdrinkapi() async {
-    final response = await http.get(Uri.parse('https://api.sampleapis.com/coffee/hot'));
-    var data = jsonDecode(response.body.toString());
-    if (response.statusCode == 200) {
-      drinklist.clear();
-      for (Map i in data) {
-        drinklist.add(BeverageModel.fromJson(i));
-      }
-      return drinklist;
-    } else {
-      return drinklist;
+  final response = await http.get(Uri.parse('https://unicode-flutter-lp.onrender.com/get_all_products'));
+  var data = jsonDecode(response.body.toString());
+  
+  if (response.statusCode == 200) {
+    drinklist.clear();
+    for (Map<String, dynamic> i in List<Map<String, dynamic>>.from(data)) {
+      drinklist.add(BeverageModel.fromJson(i));
     }
+    return drinklist;
+  } else {
+    return drinklist;
   }
+}
 
   List<String> imgsrcc = [
     "assets/21667-easy-iced-coffee-ddmfs-4x3-0093-7becf3932bd64ed7b594d46c02d0889f.jpg",
@@ -85,10 +86,11 @@ class _GenPageState extends State<GenPage> {
                       user != null && user!.displayName != null
                           ? "Welcome, ${user!.displayName}!"
                           : "Welcome Guest!",
+                          textAlign: TextAlign.center,
                       style: GoogleFonts.robotoSlab(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
-                        fontSize: 30,
+                        fontSize: 25,
                       ),
                     ),
                   ),
@@ -110,7 +112,7 @@ class _GenPageState extends State<GenPage> {
                 ),
               ),
             ),
-            SizedBox(height: 30,),
+            SizedBox(height: 15,),
         
             Padding(
               
@@ -132,7 +134,7 @@ class _GenPageState extends State<GenPage> {
                         borderRadius: BorderRadius.circular(20),
                         color: Color.fromARGB(255, 0, 112, 72),
                       ),
-              
+                                  
                       child: Container(
                                     height: 200,
                                     width: screenWidth- 16,
@@ -140,7 +142,7 @@ class _GenPageState extends State<GenPage> {
                                       borderRadius: BorderRadius.circular(15),
                                       child: CarouselSlider(
                       options: CarouselOptions(
-                        height: 200,
+                        height: 300,
                         viewportFraction: 1.0,
                         autoPlay: true,
                       ),
@@ -150,22 +152,26 @@ class _GenPageState extends State<GenPage> {
                             return Padding(
                               padding: const EdgeInsets.all(10.0),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Column(
                                     children: [
-                                      Text(
-                                                  drink.title!, 
-                                                  style: GoogleFonts.robotoSlab(
-                                                    color: Colors.white,
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 20,
-                                                  )),
+                                      SizedBox(height: 10,),
+                                      Container(
+                                        width: screenWidth/2 - 40,
+                                        child: Text(
+                                                    drink.name!, 
+                                                    style: GoogleFonts.robotoSlab(
+                                                      color: Colors.white,
+                                                      fontWeight: FontWeight.bold,
+                                                      fontSize: 17,
+                                                    )),
+                                      ),
                                                   SizedBox(height: 10,),
                                                   Container(
                                                     width: screenWidth/2 - 40,
-                                                    child: Text(
-                                                    drink.description!, 
+                                                    child: Text(  'Ingredients: ${drink.recipeIngredient?.join(', ') ?? 'No ingredients available'}', 
                                                     style: GoogleFonts.robotoSlab(
                                                       color: Colors.white,
                                                       //fontWeight: FontWeight.bold,
@@ -176,11 +182,13 @@ class _GenPageState extends State<GenPage> {
                                                   ,
                                     ],
                                   ),
+                                  SizedBox(width: 10,),
                                   ClipRRect(
                                     borderRadius: BorderRadius.circular(15),
                                     child: Image.network(
                                       drink.image! ,
                                       fit: BoxFit.cover,
+                                      height: 150,
                                       width: screenWidth/2 - 20,
                                     ),
                                   ),
@@ -226,7 +234,7 @@ class _GenPageState extends State<GenPage> {
             //   ),
             // ),
         
-             SizedBox(height: 30,),
+             SizedBox(height: 15,),
             Padding(
               padding: const EdgeInsets.fromLTRB(20, 5, 20, 10),
               child: Text(
