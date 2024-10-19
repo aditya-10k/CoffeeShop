@@ -1,12 +1,12 @@
-import 'dart:convert';
-
+//import 'dart:convert';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:coffee/workingcomps/drinksdata.dart';
-import 'package:coffee/workingcomps/model.dart';
+import 'package:coffee/workingcomps/apicatcher.dart';
+import 'package:coffee/workingcomps/categorys.dart';
+//import 'package:coffee/workingcomps/model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:http/http.dart' as http;
+//import 'package:http/http.dart' as http;
 
 class GenPage extends StatefulWidget {
   const GenPage({super.key});
@@ -35,30 +35,8 @@ class _GenPageState extends State<GenPage> {
     }
   }
 
-    List<BeverageModel> drinklist = [];
 
-  Future<List<BeverageModel>> getdrinkapi() async {
-  final response = await http.get(Uri.parse('https://unicode-flutter-lp.onrender.com/get_all_products'));
-  var data = jsonDecode(response.body.toString());
-  
-  if (response.statusCode == 200) {
-    drinklist.clear();
-    for (Map<String, dynamic> i in List<Map<String, dynamic>>.from(data)) {
-      drinklist.add(BeverageModel.fromJson(i));
-    }
-    return drinklist;
-  } else {
-    return drinklist;
-  }
-}
 
-  List<String> imgsrcc = [
-    "assets/21667-easy-iced-coffee-ddmfs-4x3-0093-7becf3932bd64ed7b594d46c02d0889f.jpg",
-    "assets/bagel-recipe.jpg",
-    "assets/Coffee-Frappe.jpg",
-    "assets/EBNfrdjX4AIGEq-.jpg",
-    "assets/oolong-iced-tea-recipe-766389-hero-07-1cc310d9aa8f497b8f78bb7021fd0e5c.jpg"
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -118,12 +96,12 @@ class _GenPageState extends State<GenPage> {
               
               padding: const EdgeInsets.all(10.0),
               child: FutureBuilder(
-                future: getdrinkapi(),
+                future: getdrinkapi('https://unicode-flutter-lp.onrender.com/get_all_products'),
                 builder: (context, snapshot) {
                   if (!snapshot.hasData) {
                     return Center(
                       child: CircularProgressIndicator(
-                        color: Colors.white,
+                        color: Color.fromARGB(255, 0, 112, 72),
                       ),
                     );
                   } else {
@@ -176,7 +154,9 @@ class _GenPageState extends State<GenPage> {
                                                       color: Colors.white,
                                                       //fontWeight: FontWeight.bold,
                                                       fontSize: 10,
-                                                    )
+                                                    ),
+                                                    maxLines: 4,  
+                                                    overflow: TextOverflow.ellipsis,
                                                     ),
                                                   )
                                                   ,
@@ -207,32 +187,7 @@ class _GenPageState extends State<GenPage> {
               ),
             ),
         
-            // Container(
-            //   height: 200,
-            //   child: ClipRRect(
-            //     borderRadius: BorderRadius.circular(15),
-            //     child: CarouselSlider(
-            //       options: CarouselOptions(
-            //         height: 200,
-            //         viewportFraction: 1.0,
-            //         autoPlay: true,
-            //       ),
-            //       items: drinklist.map((drink) {
-            //         return Builder(
-            //           builder: (BuildContext context) {
-            //             return InkWell(
-            //               child: Image.asset(
-            //                 drink.image!,
-            //                 fit: BoxFit.cover,
-            //                 width: screenWidth - 20,
-            //               ),
-            //             );
-            //           },
-            //         );
-            //       }).toList(),
-            //     ),
-            //   ),
-            // ),
+           
         
              SizedBox(height: 15,),
             Padding(
@@ -248,7 +203,52 @@ class _GenPageState extends State<GenPage> {
               ),
             ),
             SizedBox(height: 30,),
-            Drinksdata(),
+           // Drinksdata(),
+
+           Wrap(
+            //spacing: 10,
+            //runSpacing: 10,
+            alignment: WrapAlignment.center,
+                   children: categories.map((category) {
+                     return SizedBox(
+                      width: 120,
+                      height: 120,
+                       child: Card(
+                                   color: Color.fromARGB(255, 0, 112, 72),
+                                   margin: EdgeInsets.all(10),
+                                   elevation: 5,
+                                   child: GestureDetector(
+                                     onTap: () => category.onTouch(context),
+                                     child: Padding(
+                                       padding: const EdgeInsets.all(12.0),
+                                       child: Column(
+                                         children: [
+                                           ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Image.network(
+                          category.image,
+                          height: 60, 
+                          width: 60,
+                          fit: BoxFit.cover,
+                        ),
+                                           ),
+                                           Spacer(), 
+                                           Text(
+                        category.title,
+                        style: GoogleFonts.robotoSlab(
+                          fontSize: 8,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                                           ),
+                                         ],
+                                       ),
+                                     ),
+                                   ),
+                       ),
+                     );
+                   }).toList(),
+                 ),
 
             SizedBox(height: 30,),
 
