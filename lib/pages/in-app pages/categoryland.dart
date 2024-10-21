@@ -52,8 +52,8 @@ class _CategorylandState extends State<Categoryland> {
                   return Center(
                     child: Wrap(
                       alignment: WrapAlignment.center,
-                      spacing: 20.0, 
-                      runSpacing: 10.0, 
+                      spacing: 10.0, 
+                      runSpacing: 20.0, 
                       children: List.generate(drinklist.length, (index) {
                         return Container(
                           width: MediaQuery.of(context).size.width / 2 - 16, 
