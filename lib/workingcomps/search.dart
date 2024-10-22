@@ -55,8 +55,8 @@ Widget buildResults(BuildContext context) {
                   : Center(
                       child: Wrap(
                         alignment: WrapAlignment.center,
-                        spacing: 20.0,
-                        runSpacing: 10.0,
+                        spacing: 10.0,
+                        runSpacing: 20.0,
                         children: List.generate(filteredDrinks.length, (index) {
                           return Container(
                             width: MediaQuery.of(context).size.width / 2 - 16,
@@ -74,6 +74,8 @@ Widget buildResults(BuildContext context) {
                                 ),
                                 Text(
                                   filteredDrinks[index].name ?? 'No data',
+                                   maxLines: 1,  
+                                  overflow: TextOverflow.ellipsis,
                                 ),
                               ],
                             ),

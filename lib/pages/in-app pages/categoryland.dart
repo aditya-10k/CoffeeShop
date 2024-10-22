@@ -69,7 +69,9 @@ class _CategorylandState extends State<Categoryland> {
                                 ),
                               ),
                               Text(
-                                drinklist[index].name??'no data'
+                                drinklist[index].name??'no data',
+                                 maxLines: 1,  
+                                  overflow: TextOverflow.ellipsis,
                                 )
                             ],
                           ),
