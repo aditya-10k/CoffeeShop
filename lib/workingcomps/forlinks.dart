@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
 
-List<Map> forlinks = [
+List<Map> Socials = [
   {
     "icon" : Icon(Bootstrap.github),
     "link" :'https://github.com/aditya-10k',

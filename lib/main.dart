@@ -7,6 +7,7 @@ import 'package:coffee/pages/signup.dart';
 import 'package:coffee/pages/splashs.dart';
 import 'package:coffee/widgettree.dart';
 import 'package:coffee/workingcomps/cartfunc.dart';
+import 'package:coffee/workingcomps/drinksdata.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -42,6 +43,7 @@ initialRoute:'/login' ,
        '/splash' : (context) => Splashs(),
        '/homepage' : (context) => Homepage(),
        '/menu' : (context) => Menupage(),
+       '/drinksdata' : (context) => Drinksdata(),
       },
       )
     );

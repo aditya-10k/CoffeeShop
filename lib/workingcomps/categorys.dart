@@ -85,13 +85,11 @@ List<Category> categories = [
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => SafeArea(
-          child: SafeArea(
-            child: Scaffold(
-              body: Categoryland(category: Category( link: 'https://unicode-flutter-lp.onrender.com/get_products_by_category?category=SYRUPS',
-    image: 'https://athome.starbucks.com/sites/default/files/2023-01/CAH_SimpleSyrup_Hdr_2880x1660_0.jpg', 
-    title: 'SYRUPS',  
-                     onTouch:(context) {},)),
-            ),
+          child: Scaffold(
+            body: Categoryland(category: Category( link: 'https://unicode-flutter-lp.onrender.com/get_products_by_category?category=SYRUPS',
+            image: 'https://athome.starbucks.com/sites/default/files/2023-01/CAH_SimpleSyrup_Hdr_2880x1660_0.jpg', 
+            title: 'SYRUPS',  
+                   onTouch:(context) {},)),
           ),
         )),
       );

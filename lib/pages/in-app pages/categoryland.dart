@@ -65,7 +65,7 @@ class _CategorylandState extends State<Categoryland> {
                                   drinklist[index].image ?? 'https://via.placeholder.com/150',
                                   fit: BoxFit.cover,
                                   height: 300,
-                                  width: 201,
+                                  width: 200,
                                 ),
                               ),
                               Text(

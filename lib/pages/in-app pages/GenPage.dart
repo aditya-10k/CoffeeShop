@@ -2,10 +2,12 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:coffee/workingcomps/apicatcher.dart';
 import 'package:coffee/workingcomps/categorys.dart';
+import 'package:coffee/workingcomps/getintouch.dart';
 //import 'package:coffee/workingcomps/model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:icons_plus/icons_plus.dart';
 //import 'package:http/http.dart' as http;
 
 class GenPage extends StatefulWidget {
@@ -80,14 +82,25 @@ class _GenPageState extends State<GenPage> {
             // Serving text
             Padding(
               padding: const EdgeInsets.fromLTRB(20, 5, 20, 10),
-              child: Text(
-                "We serve",
-                textAlign: TextAlign.left,
-                style: GoogleFonts.robotoSlab(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 25,
-                ),
+              child: Row(
+                children: [
+                  Text(
+                    "We serve",
+                    textAlign: TextAlign.left,
+                    style: GoogleFonts.robotoSlab(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 25,
+                    ),
+                  ),
+                  Spacer(),
+                  IconButton( 
+                    onPressed: (){
+                      Navigator.pushNamed(context,'/drinksdata' );
+                    }, 
+                    icon: Icon(AntDesign.arrow_right_outline,
+                    color: Colors.black,))
+                ],
               ),
             ),
             SizedBox(height: 15,),
@@ -253,7 +266,7 @@ class _GenPageState extends State<GenPage> {
             SizedBox(height: 30,),
 
             Text(
-                "That is all we have",
+                "Get in touch",
                 textAlign: TextAlign.left,
                 style: GoogleFonts.robotoSlab(
                   color: Colors.black,
@@ -261,6 +274,10 @@ class _GenPageState extends State<GenPage> {
                   fontSize: 25,
                 ),
               ),
+
+              SizedBox(height: 30,),
+
+              Getintouch()
 
             
           ],
