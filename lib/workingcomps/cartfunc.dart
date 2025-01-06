@@ -1,39 +1,49 @@
-import 'coffeelist.dart';
+import 'dart:convert';
+import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
-class Cartfunc extends ChangeNotifier{
+import 'model.dart'; 
 
-  final List<Coffeelist> _items = [
-    Coffeelist(name: 'Bubble Tea', price: 200, imgadd: 'lib/workingcomps/imgloc/—Pngtree—bubble milk tea illustration_5359566.png'),
-    Coffeelist(name: 'Green Tea Frappe', price: 230, imgadd: 'lib/workingcomps/imgloc/—Pngtree—green tea frappe_3984596.png'),
-    Coffeelist(name: 'Cappuccino', price: 250, imgadd: 'lib/workingcomps/imgloc/coffee-cappuccino-drink-free-vector-removebg-preview.png'),
-    Coffeelist(name: 'Caramel Macchiato', price: 260, imgadd: 'lib/workingcomps/imgloc/pngtree-caramel-macchiato-in-a-mug-png-image_2886000-removebg-preview.png'),
-    Coffeelist(name: 'Cheesecake', price: 300, imgadd: 'lib/workingcomps/imgloc/pngtree-cheesecake-with-strawberry-jelly-and-chocolate-png-image_3919394-removebg-preview.png'),
-    Coffeelist(name: 'Croissant', price: 250, imgadd: 'lib/workingcomps/imgloc/pngtree-delicious-croissant-vector-png-image_4560917-removebg-preview.png'),
-    Coffeelist(name: 'Bagel', price: 250, imgadd: 'lib/workingcomps/imgloc/bagel.png'),
-    Coffeelist(name: 'Ice Coffee', price: 350, imgadd: 'lib/workingcomps/imgloc/pngtree-ice-coffee-vector-illustration-png-image_3926492-removebg-preview.png'),
-  ];
+class Cartfunc extends ChangeNotifier {
+  List<BeverageModel> _items = [];
+  List<BeverageModel> _usercart = [];
+  final String lynk = 'https://unicode-flutter-lp-new.onrender.com/get_all_products';
+  List<int> priceList = [100, 340, 220, 430, 500, 600, 120, 245, 189];
+  List<BeverageModel> get items => _items;
+  List<BeverageModel> get usercart => _usercart;
 
-  List<Coffeelist> _usercart =[];
+  Future<void> fetchItems() async {
+    final response = await http.get(Uri.parse(lynk));
+    if (response.statusCode == 200) {
+      var data = jsonDecode(response.body.toString());
+      _items = List<BeverageModel>.from(
+        data.map((item) => BeverageModel.fromJson(item))
+      );
+      notifyListeners();
+    }
+  }
 
-  List<Coffeelist> get items => _items;
+  int getRandomPrice() {
+    Random random = Random();
+    int index = random.nextInt(priceList.length);
+    return priceList[index];
+  }
 
-  List<Coffeelist> get usercart => _usercart;
+  void additem(BeverageModel drink) {
 
-  void additem(Coffeelist coffee)
-  {
-    _usercart.add(coffee);
+    _usercart.add(drink);
+    
+    notifyListeners();
+    print('item added');
+  }
+
+  void removeitem(BeverageModel drink) {
+    _usercart.remove(drink);
     notifyListeners();
   }
 
-  void removeitem(Coffeelist coffee)
-  {
-    _usercart.remove(coffee);
-    notifyListeners();
-  }
-
-  double get totalCost 
-  {
-    return _usercart.fold(0, (sum, item) => sum + item.price);
-}
+  // double get totalCost {
+  //   return _usercart.fold(0, (sum, item) => sum + (item.price ?? 0));
+  // }
 }

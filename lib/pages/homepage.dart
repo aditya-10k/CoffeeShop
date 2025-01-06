@@ -1,8 +1,11 @@
+import 'package:coffee/UserRepo.dart';
 import 'package:coffee/pages/in-app%20pages/CartPage.dart';
 import 'package:coffee/pages/in-app%20pages/GenPage.dart';
-import 'package:coffee/pages/in-app%20pages/MenuPage.dart';
 import 'package:coffee/pages/in-app%20pages/ProfilePage.dart';
+import 'package:coffee/workingcomps/drinksdata.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:icons_plus/icons_plus.dart';
 
@@ -14,16 +17,27 @@ class Homepage extends StatefulWidget {
 class _HomepageState extends State<Homepage> {
 
   int currentindex = 0;
+  late String userId ; 
+  List<Widget> pagewidgets = [];
 
  final PageController _controller = PageController(initialPage: 0);
 
-  List<Widget> pagewidgets = [
-    GenPage(),
-    Menupage(),
-   
-    cartpage(),
-    ProfilePage(),
-  ];
+ 
+
+ void initState() {
+    super.initState();
+
+    // Fetch the userId when the page loads
+    userId = FirebaseAuth.instance.currentUser?.uid ?? '';
+
+    // Initialize pagewidgets with ProfilePage receiving userId
+    pagewidgets = [
+      GenPage(),
+      Drinksdata(),
+      CartPage(),
+      Profilepage(), // Pass userId to ProfilePage
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {

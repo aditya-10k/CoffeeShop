@@ -1,40 +1,60 @@
-import 'package:coffee/workingcomps/coffeelist.dart';
+import 'package:coffee/workingcomps/model.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-class Coffetile extends StatelessWidget {
-  final Coffeelist coffee;
-  final Widget icon ;
-  void Function()? onPressed;
-   Coffetile({super.key, required this.coffee, required this.onPressed,required this.icon});
 
+class CoffeTile extends StatelessWidget {
+  final BeverageModel coffee;
+  final Widget icon;
+  final void Function()? onPressed;
+
+  CoffeTile({
+    super.key,
+    required this.coffee,
+    required this.onPressed,
+    required this.icon,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Color.fromARGB(255, 0, 112, 72),
-        borderRadius: BorderRadius.circular(10)
+        color: const Color.fromARGB(255, 0, 112, 72),
+        borderRadius: BorderRadius.circular(10),
       ),
-      margin: EdgeInsets.fromLTRB(5, 0, 5, 10),
-      padding: EdgeInsets.fromLTRB(10, 25, 10, 25),
-      child: ListTile(
-        title: Text(coffee.name,
-        style: GoogleFonts.robotoSlab(
-          color: Colors.white,
-          fontWeight: FontWeight.bold
-        ),
-        ),
-        subtitle: Text('₹${coffee.price}',
-        style: GoogleFonts.robotoSlab(
-          color: Colors.white,
-          fontWeight: FontWeight.bold
-        ),
-        ),
-        leading: Image.asset(coffee.imgadd , height: 100,),
-        trailing: IconButton.outlined(onPressed: onPressed, icon: icon,
-        color: Colors.white,
-        highlightColor: Colors.lightGreenAccent[400],),
+      margin: const EdgeInsets.fromLTRB(5, 0, 5, 10),
+      padding: const EdgeInsets.fromLTRB(10, 25, 10, 25),
+      width: MediaQuery.of(context).size.width / 2 - 10, // Dynamic width
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Image.network(
+              coffee.image ?? 'https://via.placeholder.com/150',
+              fit: BoxFit.cover,
+              height: 150,
+              width: double.infinity, // Match parent width
+            ),
+          ),
+          const SizedBox(height: 10),
+          Text(
+            coffee.name ?? 'No data',
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: GoogleFonts.robotoSlab(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          IconButton(
+            onPressed: onPressed,
+            icon: icon,
+            color: Colors.white,
+            highlightColor: Colors.lightGreenAccent[400],
+          ),
+        ],
       ),
     );
   }
 }
+

@@ -52,6 +52,7 @@ class _GenPageState extends State<GenPage> {
             // Welcome message container
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -82,25 +83,32 @@ class _GenPageState extends State<GenPage> {
             // Serving text
             Padding(
               padding: const EdgeInsets.fromLTRB(20, 5, 20, 10),
-              child: Row(
-                children: [
-                  Text(
-                    "We serve",
-                    textAlign: TextAlign.left,
-                    style: GoogleFonts.robotoSlab(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 25,
-                    ),
+              child: InkWell(
+                onTap: (){
+                          Navigator.pushNamed(context,'/drinksdata' );
+                        },
+                child: Container(
+                  child: Row(
+                    children: [
+                      Text(
+                        "We serve",
+                        textAlign: TextAlign.left,
+                        style: GoogleFonts.robotoSlab(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 25,
+                        ),
+                      ),
+                      Spacer(),
+                      IconButton( 
+                        onPressed: (){
+                          Navigator.pushNamed(context,'/drinksdata' );
+                        }, 
+                        icon: Icon(AntDesign.arrow_right_outline,
+                        color: Colors.black,))
+                    ],
                   ),
-                  Spacer(),
-                  IconButton( 
-                    onPressed: (){
-                      Navigator.pushNamed(context,'/drinksdata' );
-                    }, 
-                    icon: Icon(AntDesign.arrow_right_outline,
-                    color: Colors.black,))
-                ],
+                ),
               ),
             ),
             SizedBox(height: 15,),
@@ -109,7 +117,7 @@ class _GenPageState extends State<GenPage> {
               
               padding: const EdgeInsets.all(10.0),
               child: FutureBuilder(
-                future: getdrinkapi('https://unicode-flutter-lp.onrender.com/get_all_products'),
+                future: getdrinkapi('https://unicode-flutter-lp-new.onrender.com/get_all_products'),
                 builder: (context, snapshot) {
                   if (!snapshot.hasData) {
                     return Center(
@@ -202,78 +210,75 @@ class _GenPageState extends State<GenPage> {
         
            
         
-             SizedBox(height: 15,),
+             SizedBox(height: 30,),
             Padding(
               padding: const EdgeInsets.fromLTRB(20, 5, 20, 10),
-              child: Text(
-                "What would you like?",
-                textAlign: TextAlign.left,
-                style: GoogleFonts.robotoSlab(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 25,
-                ),
+              child: Row(
+                children: [
+                  Text(
+                    "What would you like?",
+                    textAlign: TextAlign.right,
+                    style: GoogleFonts.robotoSlab(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 25,
+                    ),
+                  ),
+                  Spacer(),
+
+                ],
               ),
             ),
-            SizedBox(height: 30,),
+            SizedBox(height: 20,),
            // Drinksdata(),
 
-           Wrap(
-            //spacing: 10,
-            //runSpacing: 10,
-            alignment: WrapAlignment.center,
-                   children: categories.map((category) {
-                     return SizedBox(
-                      width: 120,
-                      height: 120,
-                       child: Card(
-                                   color: Color.fromARGB(255, 0, 112, 72),
-                                   margin: EdgeInsets.all(10),
-                                   elevation: 5,
-                                   child: GestureDetector(
-                                     onTap: () => category.onTouch(context),
-                                     child: Padding(
-                                       padding: const EdgeInsets.all(12.0),
-                                       child: Column(
-                                         children: [
-                                           ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child: Image.network(
-                          category.image,
-                          height: 60, 
-                          width: 60,
-                          fit: BoxFit.cover,
-                        ),
-                                           ),
-                                           Spacer(), 
-                                           Text(
-                        category.title,
-                        style: GoogleFonts.robotoSlab(
-                          fontSize: 8,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
-                                           ),
-                                         ],
+           Container(
+            padding: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Color.fromARGB(255, 0, 112, 72),
+            ),
+             child: Wrap(
+              //spacing: 10,
+              //runSpacing: 10,
+              alignment: WrapAlignment.center,
+                     children: categories.map((category) {
+                       return SizedBox(
+                        width: 80,
+                        height: 80,
+                         child: Card(
+                                     color: Color.fromARGB(255, 0, 112, 72),
+                                     margin: EdgeInsets.all(5),
+                                     elevation: 5,
+                                     child: GestureDetector(
+                                       onTap: () => category.onTouch(context),
+                                       child: ClipRRect(
+                                                               borderRadius: BorderRadius.circular(10),
+                                                               child: Image.network(
+                                                                 category.image,
+                                                                 height: 60, 
+                                                                 width: 60,
+                                                                 fit: BoxFit.cover,
+                                                               ),
                                        ),
                                      ),
-                                   ),
-                       ),
-                     );
-                   }).toList(),
-                 ),
+                         ),
+                       );
+                     }).toList(),
+                   ),
+           ),
 
-            SizedBox(height: 30,),
+            // SizedBox(height: 30,),
 
-            Text(
-                "Get in touch",
-                textAlign: TextAlign.left,
-                style: GoogleFonts.robotoSlab(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 25,
-                ),
-              ),
+            // Text(
+            //     "Get in touch",
+            //     textAlign: TextAlign.left,
+            //     style: GoogleFonts.robotoSlab(
+            //       color: Colors.black,
+            //       fontWeight: FontWeight.bold,
+            //       fontSize: 25,
+            //     ),
+            //   ),
 
               SizedBox(height: 30,),
 

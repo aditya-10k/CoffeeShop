@@ -20,10 +20,10 @@ class _NavState extends State<Nav> {
 
   List<Widget> pagewidgets = [
     GenPage(),
-    Menupage(),
+    MenuPage(),
    
-    cartpage(),
-    ProfilePage(),
+    CartPage(),
+    Profilepage()
   ];
   @override
   Widget build(BuildContext context) {

@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import 'package:coffee/UserRepo.dart';
+import 'package:coffee/Usermodel.dart';
 import 'package:coffee/pages/auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +25,12 @@ class _SignupState extends State<Signup> {
   var psk = TextEditingController();
   bool obscuretext = true;
 
+  void storeUserDetails() async {
+  Usermodel user = Usermodel(name: name.text, email: mail.text);
+  await Userrepo.instance.createuser(user);
+  print('details stored');
+}
+
  Future<void> createUserWithEmailAndPassword() async {
   try {
     // Create the user
@@ -38,6 +46,8 @@ class _SignupState extends State<Signup> {
     await user?.updateDisplayName(name.text);
     await user?.reload();  // Reload the user data to reflect the updated profile
 
+     storeUserDetails();
+      
     // After successful signup, navigate to splash screen
     Navigator.pushNamed(context, '/homepage');
   } on FirebaseAuthException catch (e) {

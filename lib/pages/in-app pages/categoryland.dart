@@ -1,9 +1,11 @@
 import 'package:coffee/workingcomps/apicatcher.dart';
+import 'package:coffee/workingcomps/cartfunc.dart';
 import 'package:coffee/workingcomps/categorys.dart';
 import 'package:coffee/workingcomps/search.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'package:provider/provider.dart';
 
 class Categoryland extends StatefulWidget {
   const Categoryland({super.key, required this.category});
@@ -56,23 +58,46 @@ class _CategorylandState extends State<Categoryland> {
                       runSpacing: 20.0, 
                       children: List.generate(drinklist.length, (index) {
                         return Container(
+                          decoration: BoxDecoration(
+                            color:  Color.fromARGB(255, 0, 112, 72),
+                            borderRadius: BorderRadius.circular(20)
+                          ),
                           width: MediaQuery.of(context).size.width / 2 - 16, 
                           child: Column(
                             children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(20),
-                                child: Image.network(
-                                  drinklist[index].image ?? 'https://via.placeholder.com/150',
-                                  fit: BoxFit.cover,
-                                  height: 300,
-                                  width: 200,
+                              Padding(
+                                padding: const EdgeInsets.all(0.0),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.only(topLeft: Radius.circular(20),topRight: Radius.circular(20)),
+                                  child: Image.network(
+                                    drinklist[index].image ?? 'https://via.placeholder.com/150',
+                                    fit: BoxFit.cover,
+                                    height: 300,
+                                    width: double.infinity,
+                                  ),
                                 ),
                               ),
-                              Text(
-                                drinklist[index].name??'no data',
-                                 maxLines: 1,  
-                                  overflow: TextOverflow.ellipsis,
-                                )
+                              SizedBox(height: 10,),
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(15, 10, 15, 0),
+                                child: Text(
+                                  drinklist[index].name??'no data',
+                                   maxLines: 1,  
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                              ),
+
+                                //SizedBox(height: 3,),
+
+                                  FilledButton(
+                                  onPressed: () {  Provider.of<Cartfunc>(context, listen: false)
+                                        .additem(drinklist[index]); },
+                                  child: Icon(Icons.add) ,
+                                  style: ButtonStyle(
+                                    backgroundColor:  WidgetStateProperty.all(Color.fromARGB(255, 0, 112, 72)),
+                                  )
+                                  )
                             ],
                           ),
                         );

@@ -1,3 +1,4 @@
+import 'package:coffee/UserRepo.dart';
 import 'package:coffee/firebase_options.dart';
 import 'package:coffee/pages/forgotpass.dart';
 import 'package:coffee/pages/homepage.dart';
@@ -10,7 +11,10 @@ import 'package:coffee/workingcomps/cartfunc.dart';
 import 'package:coffee/workingcomps/drinksdata.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/get_instance.dart';
 import 'package:provider/provider.dart';
+import 'package:get/get.dart';
 
 
 Future<void> main() async {
@@ -19,6 +23,8 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform
   );
+  Get.put(Userrepo());
+  Get.put(UserIdController());
   runApp(const MyApp());
 }
 
@@ -30,7 +36,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (context) => Cartfunc(),
-      builder: (context,child) =>MaterialApp(
+      builder: (context,child) =>GetMaterialApp(
       
       debugShowCheckedModeBanner: false,
       home: const Widgettree(),
@@ -42,7 +48,7 @@ initialRoute:'/login' ,
        '/signup' : (context) => Signup(),
        '/splash' : (context) => Splashs(),
        '/homepage' : (context) => Homepage(),
-       '/menu' : (context) => Menupage(),
+       '/menu' : (context) => MenuPage(),
        '/drinksdata' : (context) => Drinksdata(),
       },
       )

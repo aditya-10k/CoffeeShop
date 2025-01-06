@@ -1,65 +1,93 @@
-import 'package:coffee/workingcomps/coffeelist.dart';
 import 'package:coffee/workingcomps/coffetile.dart';
+import 'package:coffee/workingcomps/model.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
+import '../../workingcomps/apicatcher.dart'; // Assuming this file has the API fetching function
 import '../../workingcomps/cartfunc.dart';
 
-class cartpage extends StatefulWidget {
-  const cartpage({super.key});
+class CartPage extends StatefulWidget {
+  const CartPage({super.key});
 
   @override
-  State<cartpage> createState() => _cartpageState();
+  State<CartPage> createState() => _CartPageState();
 }
 
-class _cartpageState extends State<cartpage> {
+class _CartPageState extends State<CartPage> {
+  Future<List<BeverageModel>>? _drinkListFuture;
 
-void removeitem(Coffeelist coffee)
-  {
-    Provider.of<Cartfunc>(context,listen: false).removeitem(coffee);
+  @override
+  void initState() {
+    super.initState();
+    _drinkListFuture = getdrinkapi('https://unicode-flutter-lp-new.onrender.com/get_all_products');
+  }
+
+  void removeItem(BeverageModel drink) {
+    Provider.of<Cartfunc>(context, listen: false).removeitem(drink);
   }
 
   @override
   Widget build(BuildContext context) {
     return Consumer<Cartfunc>(
-      builder : (context,value , child) => SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        body: Column(
-          children: [
-            Text('Your Cart',
-            style: GoogleFonts.robotoSlab(
-              color:Colors.black,
-              fontWeight: FontWeight.bold,
-              fontSize: 40 
-            ),),
-      
-            Expanded(child: ListView.builder(
-              itemCount: value.usercart.length,
-              itemBuilder: (context,index){
-              Coffeelist eachitem = value.usercart[index];
+      builder: (context, value, child) => SafeArea(
+        child: Scaffold(
+          backgroundColor: Colors.white,
+          body: FutureBuilder<List<BeverageModel>>(
+            future: _drinkListFuture,
+            builder: (context, snapshot) {
+              if (!snapshot.hasData) {
+                return const Center(
+                  child: CircularProgressIndicator(
+                    color: Color.fromARGB(255, 0, 112, 72),
+                  ),
+                );
+              } else {
+                List<BeverageModel> drinkList = snapshot.data!;
+                
+                List<BeverageModel> cartItems = value.usercart;
 
-              return Coffetile(coffee: eachitem, onPressed:() => removeitem(eachitem), icon: Icon(Icons.delete));
-            })),
 
-            Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Text(
-                    'Total Cost: ₹${value.totalCost.toStringAsFixed(2)}', // Formats the total cost to 2 decimal places
-                    style: GoogleFonts.robotoSlab(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color:  Colors.black,
-                    )
-                  )
-                ),
-                SizedBox(height: 10,)
-          ],
-          
+                return Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Text(
+                        'Your Cart',
+                        style: GoogleFonts.robotoSlab(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 40,
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                        child: ListView.builder(
+                          itemCount: cartItems.length,
+                          itemBuilder: (context, index) {
+                            var eachItem = cartItems[index];
+                            return Padding(
+                              padding: const EdgeInsets.only(bottom: 10.0),
+                              child: CoffeTile(
+                                coffee: eachItem,
+                                icon: const Icon(Icons.delete, color: Colors.red),
+                                onPressed: () => removeItem(eachItem),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                  ],
+                );
+              }
+            },
+          ),
         ),
       ),
-      )
     );
   }
 }
