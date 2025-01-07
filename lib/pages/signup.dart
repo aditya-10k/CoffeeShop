@@ -1,8 +1,6 @@
 import 'dart:ui';
 
-import 'package:coffee/UserRepo.dart';
-import 'package:coffee/Usermodel.dart';
-import 'package:coffee/pages/auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -25,37 +23,40 @@ class _SignupState extends State<Signup> {
   var psk = TextEditingController();
   bool obscuretext = true;
 
-  void storeUserDetails() async {
-  Usermodel user = Usermodel(name: name.text, email: mail.text);
-  await Userrepo.instance.createuser(user);
-  print('details stored');
-}
 
- Future<void> createUserWithEmailAndPassword() async {
+
+Future<void> createUserWithEmailAndPassword() async {
   try {
-    // Create the user
-    UserCredential userCredential = await Auth().createUserWithEmailAndPassword(
-      mail: mail.text,
-      psk: psk.text,
+    UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      email: mail.text,
+      password: psk.text,
     );
 
-    // Get the current user
+    
     User? user = userCredential.user;
 
-    // Update the user profile with the name
-    await user?.updateDisplayName(name.text);
-    await user?.reload();  // Reload the user data to reflect the updated profile
+    
 
-     storeUserDetails();
+    if (user != null) {
+      await user.updateDisplayName(name.text);
+      await user.reload();
+      await FirebaseFirestore.instance.collection('Users').doc(user.uid).set({
+        'email': user.email,
+        'name': name.text,  
+        'createdAt': FieldValue.serverTimestamp(),
+      });
+
       
-    // After successful signup, navigate to splash screen
-    Navigator.pushNamed(context, '/homepage');
+      Navigator.pushNamed(context, '/homepage');
+    }
   } on FirebaseAuthException catch (e) {
+ 
     setState(() {
-      errorMessage = e.message;
+      errorMessage = e.message ?? 'An error occurred';
     });
   }
 }
+
 
 @override
   void dispose() {

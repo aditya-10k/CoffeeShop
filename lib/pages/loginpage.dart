@@ -1,6 +1,5 @@
 import 'dart:ui';
 
-import 'package:coffee/pages/auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -29,9 +28,8 @@ Future<void> signInWithEmailAndPassword() async {
       password: pskController.text.trim(),
     );
 
-    // Check if FirebaseAuth.instance.currentUser is set
     final currentUser = FirebaseAuth.instance.currentUser;
-    print('currentUser UID: ${currentUser?.uid}');  // Log the UID immediately
+    print('currentUser UID: ${currentUser?.uid}');  
 
     if (currentUser != null) {
       print('Logged in successfully with UID: ${currentUser.uid}');
@@ -51,17 +49,6 @@ Future<void> signInWithEmailAndPassword() async {
     print('Unexpected error: $e');
   }
 }
-
-
-// Helper function to clear cached user data
-void clearUserData() {
-  // Add logic to clear locally cached user information (if any)
-  // For example, using SharedPreferences:
-  // SharedPreferences prefs = await SharedPreferences.getInstance();
-  // await prefs.clear();
-}
-
-
 
   @override
   void dispose() {

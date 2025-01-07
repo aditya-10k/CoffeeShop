@@ -18,7 +18,7 @@ class Category {
 
 List<Category> categories = [
    Category(
-    link: 'https://unicode-flutter-lp-new.onrender.com/get_products_by_category?category=HOT%20BEVERAGES',
+    link: 'https://unicode-flutter-lp-new-final.onrender.com/get_products_by_category?category=HOT%20BEVERAGES',
     image: 'https://athome.starbucks.com/sites/default/files/2021-06/1_CAH_CaffeMocha_Hdr_2880x16602.jpg', 
     title: 'HOT BEVERAGES',
     onTouch: (BuildContext context) {
@@ -27,7 +27,7 @@ List<Category> categories = [
         MaterialPageRoute(builder: (context) => SafeArea(
           child: SafeArea(
             child: Scaffold(
-              body: Categoryland(category: Category(link:'https://unicode-flutter-lp-new.onrender.com/get_products_by_category?category=HOT%20BEVERAGES' ,
+              body: Categoryland(category: Category(link:'https://unicode-flutter-lp-new-final.onrender.com/get_products_by_category?category=HOT%20BEVERAGES' ,
               image: 'https://athome.starbucks.com/sites/default/files/2021-06/1_CAH_CaffeMocha_Hdr_2880x16602.jpg', 
                      title: 'HOT BEVERAGES',  
                      onTouch:(context) {},)),
@@ -38,7 +38,7 @@ List<Category> categories = [
     },
   ),
    Category(
-    link: 'https://unicode-flutter-lp-new.onrender.com/get_products_by_category?category=ICED%20BEVERAGES',
+    link: 'https://unicode-flutter-lp-new-final.onrender.com/get_products_by_category?category=ICED%20BEVERAGES',
     image: 'https://athome.starbucks.com/sites/default/files/2024-05/OTHC-P00122733_COLD_ChocolateHazelnut_2880x1660_0.png', 
     title: 'ICED BEVERAGES',
      onTouch: (BuildContext context) {
@@ -47,7 +47,7 @@ List<Category> categories = [
         MaterialPageRoute(builder: (context) => SafeArea(
           child: SafeArea(
             child: Scaffold(
-              body: Categoryland(category: Category(link: 'https://unicode-flutter-lp-new.onrender.com/get_products_by_category?category=ICED%20BEVERAGES',
+              body: Categoryland(category: Category(link: 'https://unicode-flutter-lp-new-final.onrender.com/get_products_by_category?category=ICED%20BEVERAGES',
     image: 'https://athome.starbucks.com/sites/default/files/2024-05/OTHC-P00122733_COLD_ChocolateHazelnut_2880x1660_0.png', 
     title: 'ICED BEVERAGES',  
                      onTouch:(context) {},)),
@@ -58,7 +58,7 @@ List<Category> categories = [
     },
   ),
    Category(
-    link: 'https://unicode-flutter-lp-new.onrender.com/get_products_by_category?category=ADD-INS',
+    link: 'https://unicode-flutter-lp-new-final.onrender.com/get_products_by_category?category=ADD-INS',
     image: 'https://athome.starbucks.com/sites/default/files/2022-05/1_CAH_IcedCoffeeSphere_Hdr_2880x1660_0.jpg', 
     title: 'ADD-INS',
      onTouch: (BuildContext context) {
@@ -67,7 +67,7 @@ List<Category> categories = [
         MaterialPageRoute(builder: (context) => SafeArea(
           child: SafeArea(
             child: Scaffold(
-              body: Categoryland(category: Category(link: 'https://unicode-flutter-lp-new.onrender.com/get_products_by_category?category=ADD-INS',
+              body: Categoryland(category: Category(link: 'https://unicode-flutter-lp-new-final.onrender.com/get_products_by_category?category=ADD-INS',
     image: 'https://athome.starbucks.com/sites/default/files/2022-05/1_CAH_IcedCoffeeSphere_Hdr_2880x1660_0.jpg', 
     title: 'ADD-INS',  
                      onTouch:(context) {},)),
@@ -78,7 +78,7 @@ List<Category> categories = [
     },
   ),
    Category(
-    link: 'https://unicode-flutter-lp-new.onrender.com/get_products_by_category?category=SYRUPS',
+    link: 'https://unicode-flutter-lp-new-final.onrender.com/get_products_by_category?category=SYRUPS',
     image: 'https://athome.starbucks.com/sites/default/files/2023-01/CAH_SimpleSyrup_Hdr_2880x1660_0.jpg', 
     title: 'SYRUPS',
      onTouch: (BuildContext context) {
@@ -86,7 +86,7 @@ List<Category> categories = [
         context,
         MaterialPageRoute(builder: (context) => SafeArea(
           child: Scaffold(
-            body: Categoryland(category: Category( link: 'https://unicode-flutter-lp-new.onrender.com/get_products_by_category?category=SYRUPS',
+            body: Categoryland(category: Category( link: 'https://unicode-flutter-lp-new-final.onrender.com/get_products_by_category?category=SYRUPS',
             image: 'https://athome.starbucks.com/sites/default/files/2023-01/CAH_SimpleSyrup_Hdr_2880x1660_0.jpg', 
             title: 'SYRUPS',  
                    onTouch:(context) {},)),
@@ -96,7 +96,7 @@ List<Category> categories = [
     },
   ),
    Category(
-    link: 'https://unicode-flutter-lp-new.onrender.com/get_products_by_category?category=FOOD',
+    link: 'https://unicode-flutter-lp-new-final.onrender.com/get_products_by_category?category=FOOD',
     image: 'https://athome.starbucks.com/sites/default/files/2021-08/1_CAH_OvernightGrainBowl_Hdr_2880x1660_0.jpg', 
     title: 'FOOD',
      onTouch: (BuildContext context) {
@@ -105,7 +105,7 @@ List<Category> categories = [
         MaterialPageRoute(builder: (context) => SafeArea(
           child: SafeArea(
             child: Scaffold(
-              body: Categoryland(category: Category(link: 'https://unicode-flutter-lp-new.onrender.com/get_products_by_category?category=FOOD',
+              body: Categoryland(category: Category(link: 'https://unicode-flutter-lp-new-final.onrender.com/get_products_by_category?category=FOOD',
     image: 'https://athome.starbucks.com/sites/default/files/2021-08/1_CAH_OvernightGrainBowl_Hdr_2880x1660_0.jpg', 
     title: 'FOOD',  
                      onTouch:(context) {},)),

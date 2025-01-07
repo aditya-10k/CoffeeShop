@@ -49,6 +49,7 @@ dependencies:
   url_launcher: ^6.3.1
   cloud_firestore: ^5.6.0
   get: ^4.6.6
+  shared_preferences: ^2.3.5
 
 flutter_native_splash:
   android: true

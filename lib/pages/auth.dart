@@ -21,6 +21,7 @@ class Auth {
   Future<UserCredential> createUserWithEmailAndPassword({
     required String mail,
     required String psk,
+    required String name,
   }) async {
     return await _firebaseAuth.createUserWithEmailAndPassword(email: mail, password: psk);
   }

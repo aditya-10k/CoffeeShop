@@ -21,7 +21,7 @@ class Drinksdata extends StatefulWidget {
 class _DrinksdataState extends State<Drinksdata> {
 
   List<BeverageModel> drinklist = [];
-  final String lynk ='https://unicode-flutter-lp-new.onrender.com/get_all_products';
+  final String lynk ='https://unicode-flutter-lp-new-final.onrender.com/get_all_products';
 
   Future<List<BeverageModel>> getdrinkapi() async {
   final response = await http.get(Uri.parse(lynk));

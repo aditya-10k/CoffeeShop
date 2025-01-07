@@ -1,11 +1,9 @@
-import 'package:coffee/UserRepo.dart';
 import 'package:coffee/pages/in-app%20pages/CartPage.dart';
 import 'package:coffee/pages/in-app%20pages/GenPage.dart';
 import 'package:coffee/pages/in-app%20pages/ProfilePage.dart';
 import 'package:coffee/workingcomps/drinksdata.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:icons_plus/icons_plus.dart';
 

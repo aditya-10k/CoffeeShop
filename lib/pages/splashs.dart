@@ -18,11 +18,6 @@ class _SplashsState extends State<Splashs> with SingleTickerProviderStateMixin {
     Future.delayed(const Duration(milliseconds:600 ), (){
       Navigator.pushNamed(context, '/login');});
     
-   @override
-   void dispose(){
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
-    overlays: SystemUiOverlay.values);
-   }
   }
 
   @override

@@ -20,7 +20,7 @@ class _CartPageState extends State<CartPage> {
   @override
   void initState() {
     super.initState();
-    _drinkListFuture = getdrinkapi('https://unicode-flutter-lp-new.onrender.com/get_all_products');
+    _drinkListFuture = getdrinkapi('https://unicode-flutter-lp-new-final.onrender.com/get_all_products');
   }
 
   void removeItem(BeverageModel drink) {
@@ -43,7 +43,6 @@ class _CartPageState extends State<CartPage> {
                   ),
                 );
               } else {
-                List<BeverageModel> drinkList = snapshot.data!;
                 
                 List<BeverageModel> cartItems = value.usercart;
 
