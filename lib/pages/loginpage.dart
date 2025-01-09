@@ -257,11 +257,11 @@ Future<void> signInWithEmailAndPassword() async {
             ),
           ),
           backgroundColor: Colors.transparent,
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              Navigator.pushNamed(context, '/homepage');
-            },
-          ),
+          // floatingActionButton: FloatingActionButton(
+          //   onPressed: () {
+          //     Navigator.pushNamed(context, '/homepage');
+          //   },
+          // ),
         ),
       ),
     );

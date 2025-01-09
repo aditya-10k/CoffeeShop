@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:icons_plus/icons_plus.dart';
 
 class Profilepage extends StatelessWidget {
   @override
@@ -16,12 +18,23 @@ class Profilepage extends StatelessWidget {
 
 
     return Scaffold(
-      appBar: AppBar(title: Text("User Profile")),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        centerTitle: true,
+        toolbarHeight: 70,
+        leading: IconButton(onPressed:signOut , icon: Icon(BoxIcons.bx_log_out_circle, color: Color(0xFF00704A), )),
+        title: Text("User Profile",
+      style: GoogleFonts.robotoSlab(
+        color: Colors.black,
+        
+        fontWeight: FontWeight.bold,
+      ),)),
+
       body: FutureBuilder<DocumentSnapshot>(
         future: FirebaseFirestore.instance.collection('Users').doc(uid).get(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return Center(child: CircularProgressIndicator(color:const Color(0xFF00704A) ,));
           }
           if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
@@ -36,16 +49,58 @@ class Profilepage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Name: ${userData['name']}", style: TextStyle(fontSize: 18)),
-                SizedBox(height: 8),
-                Text("Email: ${userData['email']}", style: TextStyle(fontSize: 18)),
-                SizedBox(height: 8),
-                MaterialButton(onPressed: signOut, child: Text('Sign Out')),
+                Row(
+                  children: [
+                    Icon(Icons.person, size: 24),
+                    SizedBox(width: 10),
+                    Text("${userData['name']}", style: GoogleFonts.robotoSlab(fontSize: 16,)),
+                  ],
+                ),
+                SizedBox(height: 15),
+                Row(
+                  children: [
+                    Icon(IonIcons.mail, size: 24),
+                    SizedBox(width: 15),
+                    Text("${userData['email']}", style: GoogleFonts.robotoSlab(fontSize: 16, )),
+                  ],
+                ),
+                SizedBox(height: 15),
+                // FilledButton(onPressed: signOut, child: Text('Sign Out')),
+                InkWell(
+  onTap: () {
+    Navigator.pushNamed(context, '/orderhistory');
+  },
+  child: Row(
+    children: [
+      GestureDetector(
+        onTap: () {
+          Navigator.pushNamed(context, '/orderhistory');
+        },
+        child: const Icon(
+          Icons.history, 
+          
+        ),
+      ),
+      const SizedBox(width: 10),
+      Text(
+        'Order History',
+        style: GoogleFonts.robotoSlab(
+          
+          fontSize: 16,
+          
+        ),
+      ),
+    ],
+  ),
+),
+
+                
               ],
             ),
           );
         },
       ),
+      backgroundColor: Colors.white,
     );
   }
 }

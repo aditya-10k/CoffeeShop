@@ -2,7 +2,7 @@
 import 'package:coffee/firebase_options.dart';
 import 'package:coffee/pages/forgotpass.dart';
 import 'package:coffee/pages/homepage.dart';
-import 'package:coffee/pages/in-app%20pages/MenuPage.dart';
+import 'package:coffee/pages/in-app%20pages/orderhistorypage.dart';
 import 'package:coffee/pages/loginpage.dart';
 import 'package:coffee/pages/signup.dart';
 import 'package:coffee/pages/splashs.dart';
@@ -11,8 +11,8 @@ import 'package:coffee/workingcomps/cartfunc.dart';
 import 'package:coffee/workingcomps/drinksdata.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 
 
 Future<void> main() async {
@@ -44,8 +44,8 @@ initialRoute:'/login' ,
        '/signup' : (context) => Signup(),
        '/splash' : (context) => Splashs(),
        '/homepage' : (context) => Homepage(),
-       '/menu' : (context) => MenuPage(),
        '/drinksdata' : (context) => Drinksdata(),
+       '/orderhistory' : (context) => OrderHistoryPage(),
       },
       )
     );
